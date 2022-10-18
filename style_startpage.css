@@ -1,9 +1,26 @@
 html, body {
     height: 100%;
     margin: 0;
-    background-image:url(/imagens/background.png);
+    background-color: rgb(66, 66, 66);
+    /* background-image: url(/imagens/background.png); */
     height: 100%;
     background-position: left center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+
+.area_login {
+
+}
+
+#logo_startpage {
+    
+}
+
+#link_cadastro {
+    color: #5E60CD;
 }
