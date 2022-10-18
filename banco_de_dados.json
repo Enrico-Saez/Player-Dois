@@ -1,0 +1,36 @@
+{
+    "usuarios": [
+        {
+            "nome": "",
+            "senha": "",
+            "sexo": "",
+            "idade": 0,
+            "bio": "",
+            "foto": "",
+            "avaliacao_hab": 0,
+            "avaliacao_simp": 0,
+            "lista_jogos": [],
+            "lista_plat": [],
+            "pessoas_com_conversa": [
+                ""
+            ],
+            "possui_novas_mensagens": false,
+            "mensagens": {
+                "nome": [
+                    ""
+                ]
+            }
+        },
+        {},
+        {},
+        {}
+    ],
+    "jogos/plataformas" : [
+        {
+           "nome" : "",
+           "descricao" : "",
+           "imagem_capa" : "",
+           "lista_usuarios" : [""] 
+        }
+    ]
+}
