@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Player Dois | Encontre pessoas para jogar!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style_startpage.css">
 </head>
 <body>
-    <div class="area_login">
+    <div class="container">
         <img id="logo_startpage" src="/imagens/logotipo.svg" alt="logo">
-        <p>login</p>
-        
-        <p>senha</p>
-        <button id="botao_entrar">
-            entrar
-        </button>
+
+        <label for="login">Login</label>
+        <input type="text" id="login">
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha">
+
+        <input type="submit" value="Entrar">
+
         <p>Não possui uma conta? <a id="link_cadastro" href="none">Cadastre-se</a></p>
     </div>
 </body>
