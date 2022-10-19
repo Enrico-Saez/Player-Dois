@@ -2,26 +2,29 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Player Dois | Encontre pessoas para jogar!</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style_startpage.css">
 </head>
 <body>
-
-        <img id="logo_startpage" src="/imagens/logotipo.svg" alt="logo">
-
-        <div class="form-group">
-            <label for="login">Login</label>
-            <input type="text" id="login">
+    <div class="container">
+        <div class="nome border">
+        <h1>PLAYER DOIS</h1>
         </div>
-        <div class="form-group">
+        <div class="login border">
+            <label for="login">Login</label>
+            <input class="col" type="text" id="login">
+        </div>
+        <div class="senha border">
             <label for="senha">Senha</label>
-            <input type="password" id="senha">
+            <input class="col" type="password" id="senha">
         </div>
             <input type="submit" value="Entrar">
 
-        <div #texto_cadastro>
-            <p>Não possui uma conta? <a class="cadastro_btn-link" href="#">Cadastre-se</a></p>
+        <div #texto_cadastro class="border">
+            <p>Não possui uma conta? <a class="cadastro-link" href="#">Cadastre-se</a></p>
         </div>
+    </div>
 </body>
 </html>
