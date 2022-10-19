@@ -7,18 +7,21 @@
     <link rel="stylesheet" href="style_startpage.css">
 </head>
 <body>
-    <div class="container">
+
         <img id="logo_startpage" src="/imagens/logotipo.svg" alt="logo">
 
-        <label for="login">Login</label>
-        <input type="text" id="login">
+        <div class="form-group">
+            <label for="login">Login</label>
+            <input type="text" id="login">
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha">
+        </div>
+            <input type="submit" value="Entrar">
 
-        <label for="senha">Senha</label>
-        <input type="password" id="senha">
-
-        <input type="submit" value="Entrar">
-
-        <p>Não possui uma conta? <a id="link_cadastro" href="none">Cadastre-se</a></p>
-    </div>
+        <div #texto_cadastro>
+            <p>Não possui uma conta? <a class="cadastro_btn-link" href="#">Cadastre-se</a></p>
+        </div>
 </body>
 </html>
