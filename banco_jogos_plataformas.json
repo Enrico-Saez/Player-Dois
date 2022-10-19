@@ -1,26 +1,9 @@
 {
-    "jogo1": {
-        "nome": "",
-        "descricao": "",
-        "imagem_capa": "",
-        "lista_usuarios": [
-            ""
-        ]
-    },
-    "jogo2": {
-        "nome": "",
-        "descricao": "",
-        "imagem_capa": "",
-        "lista_usuarios": [
-            ""
-        ]
-    },
-    "plataforma1": {
-        "nome": "",
-        "descricao": "",
-        "imagem_capa": "",
-        "lista_usuarios": [
-            ""
-        ]
-    }
+  "Counter Strike: Global Offensive": {
+    "ehJogo": true,
+    "nome": "Counter Strike: Global Offensive",
+    "descricao": "Jogo de FPS feito pela Valve",
+    "imagem_capa": "foto_CS",
+    "lista_usuarios": []
+  }
 }

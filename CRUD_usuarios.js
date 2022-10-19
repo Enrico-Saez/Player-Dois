@@ -16,7 +16,7 @@ function criarUsuario(chave, senha, nome, sexo, idade) {
         "lista_jogos": [],
         "lista_plat": [],
         "pessoas_com_conversa": [
-            ""
+            
         ],
         "possui_novas_mensagens": false,
         "mensagens": {
@@ -42,6 +42,3 @@ function getNomeUsuario(chave) {
 }
 
 criarUsuario("enricosaez", 123456, "EnricoSaez", "masculino", 18)
-//Update
-
-//Delete
