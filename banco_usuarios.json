@@ -1,0 +1,23 @@
+{
+  "enricosaez": {
+    "senha": 123456,
+    "nome": "EnricoSaez",
+    "sexo": "masculino",
+    "idade": 18,
+    "bio": "",
+    "foto": "",
+    "avaliacao_hab": 0,
+    "avaliacao_simp": 0,
+    "lista_jogos": [],
+    "lista_plat": [],
+    "pessoas_com_conversa": [
+      ""
+    ],
+    "possui_novas_mensagens": false,
+    "mensagens": {
+      "nome": [
+        ""
+      ]
+    }
+  }
+}

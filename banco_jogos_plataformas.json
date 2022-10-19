@@ -1,0 +1,26 @@
+{
+    "jogo1": {
+        "nome": "",
+        "descricao": "",
+        "imagem_capa": "",
+        "lista_usuarios": [
+            ""
+        ]
+    },
+    "jogo2": {
+        "nome": "",
+        "descricao": "",
+        "imagem_capa": "",
+        "lista_usuarios": [
+            ""
+        ]
+    },
+    "plataforma1": {
+        "nome": "",
+        "descricao": "",
+        "imagem_capa": "",
+        "lista_usuarios": [
+            ""
+        ]
+    }
+}
