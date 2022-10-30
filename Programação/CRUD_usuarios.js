@@ -2,26 +2,29 @@ const fs = require('fs');
 
 
 // Create
-function criarUsuario(chave, senha, nome, sexo, idade) {
+function criarUsuario(login, senha, nome, sexo, idade) {
     let dados = JSON.parse(fs.readFileSync('banco_usuarios.json'));
-    dados[chave] = {
-        "senha": senha,
-        "nome": nome,
-        "sexo": sexo,
-        "idade": idade,
-        "bio": "",
-        "foto": "",
-        "avaliacao_hab": 0,
-        "avaliacao_simp": 0,
-        "lista_jogos": [],
-        "lista_plat": [],
-        "pessoas_com_conversa": [
+    dados[login] = {
+        login : login,
+        senha: senha,
+        nome: nome,
+        sexo: sexo,
+        idade: idade,
+        bio: "",
+        foto: "",
+        avaliacao_hab: 0,
+        avaliacao_simp: 0,
+        lista_jogos: [],
+        lista_plat: [],
+        pessoas_com_conversa: [
             
         ],
-        "possui_novas_mensagens": false,
-        "mensagens": {
-            "nome": [
-                ""
+        possui_novas_mensagens: false,
+        mensagens: {
+            "": [
+                {
+                    
+                }
             ]
         }
     }
