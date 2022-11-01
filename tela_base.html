@@ -9,36 +9,44 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>
-        <div class="navbar">
-            <a href="/startpage.html"><img src="/imagens/logotipo.svg" alt="PLAYER DOIS"></a>
-        </div>
+    <div class="navbar">
+      <div id="logo_page">
+        <p>PLAYER DOIS</p>
+      </div>
+
+        <div>
         <div class="dropdown">
-            <button class="dropbtn" onclick="myFunction()">Dropdown
-              <i class="fa fa-caret-down"></i>
+        <button class="button_drop" onclick="myFunction()">Amigos
+        </button>
+        <div class="dropdown-content" id="myDropdown">
+          <a href="#">Link 1</a>
+
+        </div>
+        </div> 
+        <div class="dropdown">
+            <button class="button_drop" onclick="myFunction()">Notificações
             </button>
             <div class="dropdown-content" id="myDropdown">
               <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
             </div>
             </div> 
-    </nav>
+        </div>
+    </div>
 
+    
     <script>
         function myFunction() {
           document.getElementById("myDropdown").classList.toggle("show");
         }
         
         window.onclick = function(e) {
-          if (!e.target.matches('.dropbtn')) {
+          if (!e.target.matches('.button_drop')) {
           var myDropdown = document.getElementById("myDropdown");
             if (myDropdown.classList.contains('show')) {
               myDropdown.classList.remove('show');
             }
           }
         }
-    </script>
-
+        </script>
 </body>
 </html>
