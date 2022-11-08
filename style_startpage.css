@@ -1,28 +1,3 @@
 html {
-    background-color: blue;
-    /*background-image: url(/imagens/img_startpage/background_p2.svg); */
-    height: 100%;
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
-}
-
-.cadastro-link {
-    color: #5E60CD;
-}
-
-.container {
-    background: red;
-    flex-direction: row;
-    justify-content:center;
-    align-items: center;
-}
-
-.nome {
-    text-align: center;
+    background-color: purple;
 }
