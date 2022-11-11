@@ -1,28 +1,36 @@
 body {
     width: 100%;
-    background-color: #000;
-    /* background-image: url(/imagens/img_startpage/background_p2.svg);
-    background-repeat: no-repeat;
-    background-size:auto; */
-
     color: white;
+}
+.bg {
+  /* The image used */
+  background-image: url("/imagens/img_startpage/background_p2.svg");
+  background-size:auto;
+
 }
 
 .caixa_login {
-    border: 5px solid white;
+    background-color: black;
+    border: 10px black solid;
+    border-radius: 15px;
+    text-align: center;
 }
 
-.logo {
-
+#campo_txt_login {
+    text-align: left;
+    margin: auto;
 }
 
-.input_login {
-
+.botao_entrar {
+    background-color:#ffffff;
+    transition-duration: 0.5s;
 }
+      
+.botao_entrar:hover {
+    background-color: #4b4b4b;
+    color: white;
+    }
 
-.input_senha {
-
-}
 
 .txt_cadastre {
 
@@ -33,7 +41,7 @@ body {
 
 
 
-/*Popup*/
+/* Popup
 
 .modaloverlay {
     height: 700px;
@@ -283,4 +291,4 @@ body {
 .bt:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
         inset 2px 2px 3px rgba(255, 255, 255, 0.6);
-}
+} */
