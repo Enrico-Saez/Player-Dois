@@ -1,109 +1,14 @@
 * {
-    width: 700px;
     background-color: black;
-}
-
-.bg {
-    background-image: url(ImgTeste.jpg);
+    /* background-image: url(/imagens/img_startpage/background_p2.svg);
     background-repeat: no-repeat;
-    background-size: cover;
-}
+    background-size: cover; */
 
-#container {
-    color: white;
-    font-size: 100px;
-    font-family: 'Inter';
-    position: relative;
-    left: 2150px;
-    top: 206px;
-}
-
-.pagina {
     color: white;
 }
 
-#texto {
-    font-size: 44px;
-    font-family: 'Inter';
-    position: relative;
-    left: 2250px;
-    top: 170px;
-}
 
-/*Login_input*/
-#login {
-    border-radius: 15px;
-    background-color: #D9D9D9;
-    position: relative;
-    left: 2050px;
-    top: 240px;
-    height: 50px;
-    width: 900px;
-    font-size: 35px;
-}
 
-/*Login_label*/
-#cadastro {
-    font-size: 32px;
-    font-family: 'Inter';
-    position: relative;
-    left: 2069px;
-    top: 270px;
-}
-
-/*Senha_input*/
-.senha {
-    border-radius: 15px;
-    background-color: #D9D9D9;
-    position: relative;
-    left: 2050px;
-    top: 280px;
-    height: 50px;
-    width: 900px;
-    font-size: 35px;
-}
-
-/*Senha_label*/
-#senha {
-    font-size: 33px;
-    font-family: 'Inter';
-    position: relative;
-    left: 2070px;
-    top: 310px;
-}
-
-/*Botão*/
-.styled {
-    border: 0px #D9D9D9 solid;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 50px;
-    width: 400px;
-    height: 100px;
-    position: relative;
-    left: 2400px;
-    top: 390px;
-    text-align: center;
-    color: black;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: #D9D9D9;
-    background-image: linear-gradient(to top left,
-            rgba(0, 0, 0, .2),
-            rgba(0, 0, 0, .2) 30%,
-            rgba(0, 0, 0, 0));
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
-        inset -2px -2px 3px rgba(0, 0, 0, .6);
-}
-
-.styled:hover {
-    background-color: #aaaaaa;
-}
-
-.styled:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-        inset 2px 2px 3px rgba(255, 255, 255, 0.6);
-}
 
 
 /*Popup*/
@@ -163,8 +68,6 @@
 #conta {
     font-size: 30px;
     position: relative;
-    left: 2300px;
-    top: 350px;
 }
 
 #pop_titulo {
