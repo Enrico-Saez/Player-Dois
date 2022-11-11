@@ -1,11 +1,33 @@
-* {
-    background-color: black;
+body {
+    width: 100%;
+    background-color: #000;
     /* background-image: url(/imagens/img_startpage/background_p2.svg);
     background-repeat: no-repeat;
-    background-size: cover; */
+    background-size:auto; */
 
     color: white;
 }
+
+.caixa_login {
+    border: 5px solid white;
+}
+
+.logo {
+
+}
+
+.input_login {
+
+}
+
+.input_senha {
+
+}
+
+.txt_cadastre {
+
+}
+
 
 
 
