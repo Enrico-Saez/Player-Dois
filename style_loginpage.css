@@ -3,19 +3,28 @@ body {
     color: white;
 }
 .bg {
-  /* The image used */
-  background-image: url("/imagens/img_startpage/background_p2.svg");
-  background-size:auto;
+
+  background: url("/imagens/img_startpage/background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
 
 }
 
 .caixa_login {
-    background-color: black;
-    border: 10px black solid;
-    border-radius: 15px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
     text-align: center;
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
 }
-
+.logo {
+    line-height: 0;
+}
+.inputs{
+    padding: 10%;
+    padding-bottom: 15%;
+}
 #campo_txt_login {
     text-align: left;
     margin: auto;
@@ -27,268 +36,6 @@ body {
 }
       
 .botao_entrar:hover {
-    background-color: #4b4b4b;
+    background-color: #4b1499;
     color: white;
     }
-
-
-.txt_cadastre {
-
-}
-
-
-
-
-
-
-/* Popup
-
-.modaloverlay {
-    height: 700px;
-    left: 1100px;
-    opacity: 0;
-    pointer-events: none;
-    position: relative;
-    top: -550px;
-    -webkit-transition: opacity 900ms ease-in;
-    -moz-transition: opacity 900ms ease-in;
-    transition: opacity 900ms ease-in;
-    z-index: -1;
-    background-color: #5E60CD;
-}
-
-.modaloverlay:target {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 99999;
-}
-
-.modal {
-    background-color: #5E60CD;
-    height: 833px;
-    width: 999px;
-    position: relative;
-    left: -120px;
-    padding: 20px;
-    border-radius: 50px;
-
-    @media (min-width: 60px) {
-        height: 75%;
-        margin: 5% auto;
-        max-height: 57px;
-        max-width: 66px;
-        width: 0;
-    }
-}
-
-.close {
-    background-color: #ffffff;
-    border-radius: 50px;
-    color: #000000;
-    font-size: 24px;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    z-index: 1;
-    position: relative;
-    left: 25px;
-    top: 30px;
-}
-
-#conta {
-    font-size: 30px;
-    position: relative;
-}
-
-#pop_titulo {
-    background-color: #5E60CD;
-    text-align: center;
-    font-size: 50px;
-    position: relative;
-    left: 120px;
-    height: 700px;
-    z-index: auto;
-}
-
-#titulo {
-    background-color: #5E60CD;
-    text-align: center;
-    font-size: 70px;
-    position: relative;
-    left: 20px;
-    top: 35px;
-    height: 108px;
-    z-index: 1;
-}
-#labelLogin{
-    background-color: #5E60CD;
-    text-align: center;
-    font-size: 35px;
-    position: relative;
-    left: -59px;
-    top: 33px;
-    height: 40px;
-    width: 90px;
-    z-index: auto;
-}
-#txt_login{
-    background-color: #D9D9D9;
-    position: relative;
-    left: -60px;
-    width: 750px;
-    height: 35px;
-    border-radius: 25px;
-    border: 0px solid;
-    font-size: 30px;
-}
-#labelSenha{
-    background-color: #5E60CD;
-    text-align: center;
-    font-size: 35px;
-    position: relative;
-    left: -59px;
-    top: 33px;
-    height: 40px;
-    width: 90px;
-    z-index: auto;
-}
-#txt_senha{
-    background-color: #D9D9D9;
-    position: relative;
-    left: -60px;
-    width: 750px;
-    height: 35px;
-    border-radius: 25px;
-    border: 0px solid;
-    font-size: 30px;
-}
-#labelConfirma{
-    background-color: #5E60CD;
-    text-align: center;
-    font-size: 35px;
-    position: relative;
-    left: -55px;
-    top: 33px;
-    height: 40px;
-    width: 250px;
-    z-index: auto;
-}
-#txt_confirma{
-    background-color: #D9D9D9;
-    position: relative;
-    left: -60px;
-    width: 750px;
-    height: 35px;
-    border-radius: 25px;
-    border: 0px solid;
-    font-size: 30px;
-}
-#labelData{
-    background-color: #5E60CD;
-    text-align: center;
-    font-size: 35px;
-    position: relative;
-    left: -65px;
-    top: 33px;
-    height: 40px;
-    width: 310px;
-    z-index: auto;
-}
-#txt_data{
-    background-color: #5E60CD;
-    position: relative;
-    left: 70px;
-    top: -40px;
-    width: 280px;
-    height: 35px;
-    border-radius: 25px;
-    border: 0px solid;
-    font-size: 35px;
-    color: white;
-}
-#labelSexoT{
-    background-color: #5E60CD;
-    text-align: center;
-    font-size: 35px;
-    position: relative;
-    left: -140px;
-    height: 40px;
-    width: 250px;
-    z-index: auto;
-}
-#labelSexoF{
-    background-color: #5E60CD;
-    text-align: center;
-    font-size: 35px;
-    position: relative;
-    left: 60px;
-    top: -37px;
-    height: 40px;
-    width: 150px;
-    z-index: auto;
-}
-#txt_sexoF{
-    background-color: #5E60CD;
-    position: relative;
-    left: -150px;
-    top: -150px;
-    width: 280px;
-    height: 25px;
-    border-radius: 25px;
-    border: 0px solid;
-    font-size: 5px;
-}
-#labelSexoM{
-    background-color: #5E60CD;
-    text-align: center;
-    font-size: 35px;
-    position: relative;
-    left: 330px;
-    top: -73px;
-    height: 40px;
-    width: 150px;
-    z-index: auto;
-}
-#txt_sexoM{
-    background-color: #5E60CD;
-    position: relative;
-    left: -200px;
-    top: -147px;
-    width: 280px;
-    height: 25px;
-    border-radius: 25px;
-    border: 0px solid;
-    font-size: 5px;
-}
-
-.bt {
-    border: 0px #D9D9D9 solid;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 50px;
-    width: 400px;
-    height: 100px;
-    position: relative;
-    left: -10px;
-    top: -120px;
-    text-align: center;
-    color: black;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: #D9D9D9;
-    background-image: linear-gradient(to top left,
-            rgba(0, 0, 0, .2),
-            rgba(0, 0, 0, .2) 30%,
-            rgba(0, 0, 0, 0));
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
-        inset -2px -2px 3px rgba(0, 0, 0, .6);
-}
-
-.bt:hover {
-    background-color: #aaaaaa;
-}
-
-.bt:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-        inset 2px 2px 3px rgba(255, 255, 255, 0.6);
-} */
