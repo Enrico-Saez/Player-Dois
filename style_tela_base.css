@@ -1,6 +1,6 @@
 body {
     color: white;
-    background-color: rgb(24, 24, 24);
+    background-color: rgb(20, 20, 20);
 }
 
 .navbar {
@@ -8,5 +8,37 @@ body {
     background: linear-gradient(91.53deg, #5E60CD 0%, #7401B8 164.95%);
 }
 
-#logo {
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+}
+.btn {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu_lateral {
+
+}
+
+.usuario {
+    background-color: #1E1E1E;
+    margin-top: 1%;
+    padding: 1%;
+}
+
+.inscricoes {
+    background-color: #1E1E1E;
+    margin-top: 1%;
+    padding: 1%;
+}
+
+.funcoes_basicas {
+    background-color: #1E1E1E;
+    margin-top: 1%;
+    padding: 1%;
 }
