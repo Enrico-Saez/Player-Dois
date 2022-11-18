@@ -20,9 +20,14 @@ a {
     text-decoration: none;
     color: white;
 }
+a:hover {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration:none; 
+    cursor:pointer;  
+}
 
 .menu_lateral {
-
+    width: 280px;
 }
 
 .usuario {
@@ -41,4 +46,9 @@ a {
     background-color: #1E1E1E;
     margin-top: 1%;
     padding: 1%;
+}
+
+.card {
+    background-color: black;
+    border: #5E60CD 2px solid;
 }
