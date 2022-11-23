@@ -1,0 +1,58 @@
+body {
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+.navbar {
+    background: linear-gradient(91.53deg, #5E60CD 0%, #7401B8 164.95%);
+}
+
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+}
+
+.btn {
+    color: white;
+}
+
+.botoes {
+    display: inline-flex;
+}
+
+.sidebar {
+    background: #111111;
+    min-height: 92vh;
+}
+
+
+a, span {
+    text-decoration: none;
+    color: white;
+}
+a,span:hover {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration:none; 
+    cursor:pointer;  
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: #5E60CD;
+}
+
+.modal-content {
+    background: linear-gradient(126.63deg, rgba(127, 255, 218, 0.2) -52.35%, rgba(94, 96, 205, 0.2) 55.99%, rgba(116, 1, 184, 0.2) 164.33%), #000000;
+}
+
+.modal-header, .modal-footer {
+    border: 0 none;
+  }
+
+.card {
+    background-color: black;
+    border: #5E60CD 2px solid;
+}
