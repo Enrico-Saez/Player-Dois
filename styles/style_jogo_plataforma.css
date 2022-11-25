@@ -52,12 +52,39 @@ a,span:hover {
     border: 0 none;
   }
 
-
-.jogo_plataforma {
-    background: blue;
+.capa {
+    background-image: url("https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 
-.list-group-item-action {
-    color: white;
+.jogadores{
+    list-style-type: none;
+}
+.jogadores a:hover {
+    color: #ffffffa0;
+}
+
+.container_jogo {
+    border-right: #111111 1px solid;
+}
+.nome_jogo {
+    text-align: center;
+}
+
+.jogadores li a {
+    background-color: #111111;
+}
+
+.nome_jogo {
+    text-shadow: #111111 2px 2px 8px ;
+}
+
+.btn_inscreva-se {
+    background-color:#5e60cdc2;
+    color: #ffffff;
+    border: white 2px solid;
+
 }

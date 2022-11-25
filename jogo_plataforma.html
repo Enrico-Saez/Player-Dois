@@ -162,99 +162,114 @@
                 </div>
             </div>
 
-<!-- Parte DIFERENTE NAS PAGINAS -->
-            <div class="col pb-2">
+            <!-- Parte DIFERENTE NAS PAGINAS -->
+            <div class="col pb-2 container_jogo">
                 <div class="jogo_plataforma">
-                    <div class="capa">
-                        <h5 class="p-2">Nome do Jogo</h5>
-                        <button class="btn">
-                            <p>Inscrever-se</p>
-                        </button>
+                    <div class="capa pt-5 pb-2 px-5">
+                        <span class="nome_jogo">
+                            <h5>Nome do Jogo</h5>
+                        </span>
+                        <hr>
+                        <span class="nome_jogo">
+                            <p><button class="btn btn_inscreva-se">Inscreva-se</button></p>
+                        </span>
                     </div>
-                </div>
-                <div class="lista_jogadores list-group p-3">
-                        <a href="#" class="list-group-item-action"><img src="#" alt="Foto do Jogador"> Nome do Jogador</a>
-                        <a href="#" class="list-group-item-action"><img src="#" alt="Foto do Jogador"> Nome do Jogador</a>
-                      </div>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- MODALS PARA CADASTRO DE JOGO E PLATAFORMA-->
-        <!-- M. Cadastro Jogo-->
-        <div class="modal fade" id="modal_jogo" tabindex="-1" aria-labelledby="modalJogo" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content p-2">
-                    <div class="modal-header">
-
-                        <h5 class="modal-title" id="exampleModalLabel">Cadastro de Jogo </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-2">
-                                <label for="nome_jogo" class="col-form-label">Nome do jogo:</label>
-                                <input type="text" class="form-control" id="nome_jogo">
-                            </div>
-                            <div class="mb-2">
-                                <label for="descricao_jogo" class="col-form-label">Descrição:</label>
-                                <input type="text" class="form-control" id="descricao_jogo"></input>
-                            </div>
-
-                            <div class="mb-2">
-                                <label for="imagem_jogo" class="col-form-label">Imagem de capa:</label>
-                                <input type="file" class="form-control" id="imagem_jogo"></input>
-                            </div>
-
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-light">Cadastrar</button>
+                    <div class="row">
+                        <div class="lista col-6 pt-2">
+                            <ul class="jogadores bg-">
+                                <h6>Lista de Jogadores</h6>
+                                <hr>
+                                <li class="row"><a href="#">Nome do Jogador</a></li>
+                                <li class="row"><a href="#">Nome do Jogador</a></li>
+                                <li class="row"><a href="#">Nome do Jogador</a></li>
+                                <li class="row"><a href="#">Nome do Jogador</a></li>
+                            </ul>
+                        </div>
+                        <div class="descricao col-6 pt-2 p-4">
+                            <h6>Descrição do Jogo</h6>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, ut? Sint mollitia
+                                asperiores consequatur laboriosam voluptate dolorum rerum, molestias nesciunt fugiat
+                                deserunt error assumenda voluptas odio ipsam? Fuga, unde. Excepturi.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- M. Cadastro Plataforma-->
-        <div class="modal fade" id="modal_plataforma" tabindex="-1" aria-labelledby="modalPlataforma"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content p-2">
-                    <div class="modal-header">
 
-                        <h5 class="modal-title" id="exampleModalLabel">Cadastro de Plataforma </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
+            <!-- MODALS PARA CADASTRO DE JOGO E PLATAFORMA-->
+            <!-- M. Cadastro Jogo-->
+            <div class="modal fade" id="modal_jogo" tabindex="-1" aria-labelledby="modalJogo" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content p-2">
+                        <div class="modal-header">
 
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-2">
-                                <label for="nome_plataforma" class="col-form-label">Nome da plataforma:</label>
-                                <input type="text" class="form-control" id="nome_plataforma">
-                            </div>
-                            <div class="mb-2">
-                                <label for="descricao_plataforma" class="col-form-label">Descrição:</label>
-                                <input type="text" class="form-control" id="descricao_plataforma"></input>
-                            </div>
+                            <h5 class="modal-title" id="exampleModalLabel">Cadastro de Jogo </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
 
-                            <div class="mb-2">
-                                <label for="imagem_plataforma" class="col-form-label">Imagem de capa:</label>
-                                <input type="file" class="form-control" id="imagem_plataforma"></input>
-                            </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-2">
+                                    <label for="nome_jogo" class="col-form-label">Nome do jogo:</label>
+                                    <input type="text" class="form-control" id="nome_jogo">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="descricao_jogo" class="col-form-label">Descrição:</label>
+                                    <input type="text" class="form-control" id="descricao_jogo"></input>
+                                </div>
 
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-light">Cadastrar</button>
+                                <div class="mb-2">
+                                    <label for="imagem_jogo" class="col-form-label">Imagem de capa:</label>
+                                    <input type="file" class="form-control" id="imagem_jogo"></input>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-light">Cadastrar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <!-- M. Cadastro Plataforma-->
+            <div class="modal fade" id="modal_plataforma" tabindex="-1" aria-labelledby="modalPlataforma"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content p-2">
+                        <div class="modal-header">
+
+                            <h5 class="modal-title" id="exampleModalLabel">Cadastro de Plataforma </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-2">
+                                    <label for="nome_plataforma" class="col-form-label">Nome da plataforma:</label>
+                                    <input type="text" class="form-control" id="nome_plataforma">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="descricao_plataforma" class="col-form-label">Descrição:</label>
+                                    <input type="text" class="form-control" id="descricao_plataforma"></input>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label for="imagem_plataforma" class="col-form-label">Imagem de capa:</label>
+                                    <input type="file" class="form-control" id="imagem_plataforma"></input>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-light">Cadastrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 </body>
