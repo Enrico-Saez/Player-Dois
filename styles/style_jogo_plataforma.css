@@ -53,9 +53,11 @@ a,span:hover {
   }
 
 
-  /* Especifico da homepage */
-.card {
-    background-color: black;
-    border: #5E60CD 2px solid;
-    width: 12rem;
+.jogo_plataforma {
+    background: blue;
+}
+
+
+.list-group-item-action {
+    color: white;
 }

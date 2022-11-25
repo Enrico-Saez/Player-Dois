@@ -1,36 +1,262 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-      crossorigin="anonymous"></script>
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/style_jogo_plataforma.css">
     <title>Player Dois | Nome de jogo/plataforma</title>
 </head>
-<body>
-    <div class="nav_capa">
-        <p>Nome do Jogo</p>
-        <button class="inscreva-se">
-            Inscreva-se
-        </button>
-    </div>
-    <div class="lista">
-        <ol>
-            <li>Nome do Jogador</li>
-            <li>Nome do Jogador</li>
-            <li>Nome do Jogador</li>
-            <li>Nome do Jogador</li>
-            <li>Nome do Jogador</li>
-        </ol>
-    </div>
 
-    <div class="descrição">
-        <p>Descrição</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio pariatur eaque quam earum ad architecto facere molestiae distinctio atque maxime voluptates hic blanditiis sit officiis, nesciunt dolorum! Sint, iste aperiam?</p>
-    </div>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="homepage.html" class="navbar-brand text-decoration-none">PLAYER DOIS</a>
+
+
+            <div class="botoes">
+
+                <div class="dropdown-center">
+                    <button class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-chat-right-text-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM3.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
+                        </svg> Mensagens</button>
+
+                    <ul class="dropdown-menu bg-dark">
+                        <li><a class="dropdown-item" href="#">Conversa 1</a></li>
+                        <li><a class="dropdown-item" href="#">Conversa 2</a></li>
+                        <li><a class="dropdown-item" href="#">Conversa 3</a></li>
+                    </ul>
+                </div>
+
+                <div class="dropdown-center">
+                    <button class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-people-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                        </svg> Amigos</button>
+
+                    <ul class="dropdown-menu bg-dark">
+                        <li><a class="dropdown-item" href="#">Amigo 1</a></li>
+                        <li><a class="dropdown-item" href="#">Amigo 2</a></li>
+                        <li><a class="dropdown-item" href="#">Amigo 3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row flex-nowrap">
+
+            <div class="col-auto col-sm-4 col-md-3 px-0">
+                <div class="sidebar d-flex flex-column align-items-center align-items-sm-start px-3 pt-2">
+
+                    <div class="usuario">
+                        <a href="#" class="d-flex align-items-center mt-2">
+                            <span class="d-sm-inline">Samuel de Castro</span>
+                        </a>
+                    </div>
+                    <div class="inscricoes">
+
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+                            <hr>
+                            <h5>Inscrições</h5>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline">Jogo de RPG</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline">Jogo de RPG</span> </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline">Jogo de RPG</span> </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline">Jogo de RPG</span></a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline">Jogo de RPG</span></a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline">Jogo de RPG</span></a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline">Jogo de RPG</span></a>
+                            </li>
+
+                    </div>
+
+                    <hr>
+                    <div class="funcoes_basicas">
+
+                        <h5>Menu</h5>
+
+                        </ul>
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+                            <li class="nav-item">
+                                <a href="/homepage.html" class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                                        </svg> Página Inicial</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal_jogo"
+                                    class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-plus-square"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                            <path
+                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                        </svg> Cadastrar Jogo</span> </a>
+                            </li>
+                            <li>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal_plataforma"
+                                    class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-plus-square"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                            <path
+                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                        </svg> Cadastrar Plataforma</span> </a>
+                            </li>
+                            <li>
+                                <a href="/loginpage.html" class="nav-link px-0 align-middle">
+                                    <span class="ms-2 d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-box-arrow-left"
+                                            viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                                            <path fill-rule="evenodd"
+                                                d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                                        </svg> Sair</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+<!-- Parte DIFERENTE NAS PAGINAS -->
+            <div class="col pb-2">
+                <div class="jogo_plataforma">
+                    <div class="capa">
+                        <h5 class="p-2">Nome do Jogo</h5>
+                        <button class="btn">
+                            <p>Inscrever-se</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="lista_jogadores list-group p-3">
+                        <a href="#" class="list-group-item-action"><img src="#" alt="Foto do Jogador"> Nome do Jogador</a>
+                        <a href="#" class="list-group-item-action"><img src="#" alt="Foto do Jogador"> Nome do Jogador</a>
+                      </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODALS PARA CADASTRO DE JOGO E PLATAFORMA-->
+        <!-- M. Cadastro Jogo-->
+        <div class="modal fade" id="modal_jogo" tabindex="-1" aria-labelledby="modalJogo" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content p-2">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="exampleModalLabel">Cadastro de Jogo </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-2">
+                                <label for="nome_jogo" class="col-form-label">Nome do jogo:</label>
+                                <input type="text" class="form-control" id="nome_jogo">
+                            </div>
+                            <div class="mb-2">
+                                <label for="descricao_jogo" class="col-form-label">Descrição:</label>
+                                <input type="text" class="form-control" id="descricao_jogo"></input>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="imagem_jogo" class="col-form-label">Imagem de capa:</label>
+                                <input type="file" class="form-control" id="imagem_jogo"></input>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-light">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- M. Cadastro Plataforma-->
+        <div class="modal fade" id="modal_plataforma" tabindex="-1" aria-labelledby="modalPlataforma"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content p-2">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="exampleModalLabel">Cadastro de Plataforma </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-2">
+                                <label for="nome_plataforma" class="col-form-label">Nome da plataforma:</label>
+                                <input type="text" class="form-control" id="nome_plataforma">
+                            </div>
+                            <div class="mb-2">
+                                <label for="descricao_plataforma" class="col-form-label">Descrição:</label>
+                                <input type="text" class="form-control" id="descricao_plataforma"></input>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="imagem_plataforma" class="col-form-label">Imagem de capa:</label>
+                                <input type="file" class="form-control" id="imagem_plataforma"></input>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-light">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 </body>
+
 </html>
