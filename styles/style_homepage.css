@@ -55,4 +55,5 @@ a,span:hover {
 .card {
     background-color: black;
     border: #5E60CD 2px solid;
+    width: 12rem;
 }
