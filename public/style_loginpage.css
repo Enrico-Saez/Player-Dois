@@ -3,7 +3,7 @@ body {
   color: white;
 }
 .bg {
-  background: url("background.svg");
+  background: url("./background.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }

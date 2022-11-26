@@ -6,10 +6,6 @@ const gamePlatformSchema = new Schema({
     type: String,
     required: true,
   },
-  nome: {
-    type: String,
-    required: true,
-  },
   descricao: {
     type: String,
     required: true,
@@ -18,11 +14,11 @@ const gamePlatformSchema = new Schema({
     type: Boolean,
     required: true,
   },
-  Imagem: {
+  imagem: {
     type: String,
     required: true,
   },
-  Usuarios: {
+  usuarios: {
     type: Object,
     required: true,
   },

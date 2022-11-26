@@ -17,26 +17,26 @@
 <body class="bg">
   <div class="container caixa_login col-sm-12 col-md-6 float-end">
     <div class="logo mt-5">
-      <h1 style="font-weight:bold;">PLAYER DOIS</h1>
+      <p style="font-weight:bold;" id="player-dois">PLAYER DOIS</p>
       <p style="font-weight:bold;">Encontre pessoas para jogar!</p>
     </div>
 
     <form class="inputs" action="/login" method="POST" id="loginForm">
       <div class="login form-group m-2">
-        <p id="campo_txt_login">Login:</p>
+        <p id="campo_txt_login">Login</p>
         <input type="text" class="form-control" placeholder="Insira seu usuário" name="login" id="login" required>
       </div>
 
       <div class="senha form-group m-2">
-        <p id="campo_txt_login">Senha:</p>
+        <p id="campo_txt_login">Senha</p>
         <input type="password" class="form-control" placeholder="Insira sua senha" name="senha" id="senha" required>
       </div>
 
-      <p>Não possui uma conta? <a style="color: #5E60CD" data-bs-toggle="modal" data-bs-target="#modal_cadastro"
-          href="#">Cadastre-se</a></p>
-
+      <button class="botao_entrar mb-2 btn" onclick="logar()">Entrar</button>
     </form>
-    <button class="botao_entrar mb-2 btn" onclick="logar()"></button>
+    <p>Não possui uma conta? <a style="color: #5E60CD" data-bs-toggle="modal" data-bs-target="#modal_cadastro"
+      href="#">Cadastre-se</a></p>
+    
   </div>
 
   <!-- POPUP CADASTRO -->
@@ -134,13 +134,10 @@
     const loginForm = document.getElementById("loginForm");
     const login = document.getElementById("login");
     const senhaLogin = document.getElementById("senha");
-    const loginElements = Array.from(loginForm.elements);
-
-    for (var element of loginElements) {
-      if(element.value.length < 1) {
-        alert("Todos os campos devem ser preenchidos.");
-        return;
-      }
+    
+    if (login.value.length < 1 && senhaLogin.value.length < 1) {
+      alert("Todos os campos devem ser preenchidos.");
+      return;
     }
     
     loginForm.submit();
