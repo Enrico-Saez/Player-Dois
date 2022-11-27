@@ -170,25 +170,16 @@
             </button>
           </div>
 
-          gamesPlatforms.forEach(gamePlatform => {
+          <% gamesPlatforms.forEach(gamePlatform => { %>
             <div class="card p-1 m-1">
               <img class="card-img-top"
-                src="foto_usuario.png"
+                src= "<%= gamePlatform.imagem %>"
                 alt="Card image">
               <div class="card-body">
-                <h5 class="card-title">Jogo de RPG</h5>
+                <h5 class="card-title"><%= gamePlatform._id%></h5>
               </div>
             </div>
-          })
-
-          <div class="card p-1 m-1">
-            <img class="card-img-top"
-              src="foto_usuario.png"
-              alt="Card image">
-            <div class="card-body">
-              <h5 class="card-title">Jogo de RPG</h5>
-            </div>
-          </div>
+         <% }); %>
 
         </div>
       </div>
@@ -242,25 +233,24 @@
         </div>
 
         <div class="modal-body">
-          <form>
+          <form  method="POST" action="cadastroPlataforma" enctype="multipart/form-data">
             <div class="mb-2">
               <label for="nome_plataforma" class="col-form-label">Nome da plataforma:</label>
-              <input type="text" class="form-control" id="nome_plataforma">
+              <input type="text" class="form-control" id="nome_plataforma" name="nome" required>
             </div>
             <div class="mb-2">
               <label for="descricao_plataforma" class="col-form-label">Descrição:</label>
-              <input type="text" class="form-control" id="descricao_plataforma"></input>
+              <input type="text" class="form-control" id="descricao_plataforma" name="desc" required></input>
             </div>
 
             <div class="mb-2">
               <label for="imagem_plataforma" class="col-form-label">Imagem de capa:</label>
-              <input type="file" class="form-control" id="imagem_plataforma"></input>
+              <input type="file" class="form-control" id="imagem_plataforma" name="imagem" required></input>
             </div>
-
+            <div class="modal-footer">
+              <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
+            </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-light">Cadastrar</button>
         </div>
       </div>
     </div>

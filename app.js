@@ -114,26 +114,30 @@ app.post("/cadastroJogo", (req, res) => {
 });
 
 app.post("/cadastroPlataforma", (req, res) => {
-  const file = req.files.imagem_capa;
+  const file = req.files.imagem;
   const filename = file.name;
-  file.mv("./public/", filename);
-
-  const gamePlatform = new GamePlatform({
-    _id: req.body.nome,
-    descricao: req.body.desc,
-    ehJogo: false,
-    imagem: filename,
-    usuarios: [],
-  });
-
-  gamePlatform
-    .save()
-    .then((result) => {
-      res.redirect("/home");
-    })
-    .catch((err) => {
+  file.mv("./public/" + filename, (err) => {
+    if (err) {
       console.log(err);
-    });
+    } else {
+      const gamePlatform = new GamePlatform({
+        _id: req.body.nome,
+        descricao: req.body.desc,
+        ehJogo: false,
+        imagem: filename,
+        usuarios: [],
+      });
+
+      gamePlatform
+        .save()
+        .then((result) => {
+          res.redirect("/home");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
 });
 
 app.post("/login", (req, res) => {
