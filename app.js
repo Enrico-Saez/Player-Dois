@@ -18,6 +18,7 @@ mongoose
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
+app.use(upload());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
@@ -56,11 +57,6 @@ app.get("/home", (req, res) => {
     });
 });
 
-app.get("/cadastro_jogos_plataformas", (req, res) => {
-  res.status(200).render("cadastroJogosPlataformas");
-});
-
-// Cadastro de usuário
 app.post("/cadastroUsuario", (req, res) => {
   const user = new User({
     _id: req.body.login,
@@ -69,9 +65,10 @@ app.post("/cadastroUsuario", (req, res) => {
     sexo: req.body.sexo,
     data_nasc: req.body.data_nasc,
     bio: " ",
-    foto: "./public/foto_usuario.png",
+    foto: "foto_usuario.png",
     aval_hab: 0,
     aval_sim: 0,
+    lista_amigos: [],
     lista_jogos: [],
     lista_plats: [],
     pessoas_com_conversa: [],
@@ -89,7 +86,34 @@ app.post("/cadastroUsuario", (req, res) => {
     });
 });
 
-app.post("/cadastroJogoPlataforma", (req, res) => {
+app.post("/cadastroJogo", (req, res) => {
+  const file = req.files.imagem;
+  const filename = file.name;
+  file.mv("./public/" + filename, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const gamePlatform = new GamePlatform({
+        _id: req.body.nome,
+        descricao: req.body.desc,
+        ehJogo: true,
+        imagem: filename,
+        usuarios: [],
+      });
+
+      gamePlatform
+        .save()
+        .then((result) => {
+          res.redirect("/home");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
+});
+
+app.post("/cadastroPlataforma", (req, res) => {
   const file = req.files.imagem_capa;
   const filename = file.name;
   file.mv("./public/", filename);
@@ -97,15 +121,15 @@ app.post("/cadastroJogoPlataforma", (req, res) => {
   const gamePlatform = new GamePlatform({
     _id: req.body.nome,
     descricao: req.body.desc,
-    ehJogo: true,
-    imagem: "./public/" + filename,
+    ehJogo: false,
+    imagem: filename,
     usuarios: [],
   });
 
   gamePlatform
     .save()
     .then((result) => {
-      res.redirect("/cadastro_jogos_plataformas");
+      res.redirect("/home");
     })
     .catch((err) => {
       console.log(err);

@@ -32,9 +32,17 @@
             </svg> Mensagens</button>
 
           <ul class="dropdown-menu bg-dark">
-            <li><a class="dropdown-item" href="#">Conversa 1</a></li>
-            <li><a class="dropdown-item" href="#">Conversa 2</a></li>
-            <li><a class="dropdown-item" href="#">Conversa 3</a></li>
+            <% users.forEach(user => { %>
+              <% if(user._id === currentUser[0].currentUserLogin) { %>
+                <% if (user.pessoas_com_conversa.length < 1) { %>
+                  <li><p class="dropdown-item">Não possui conversas</p></li>
+                  <% } else { %>
+                    <% user.pessoas_com_conversa.forEach(pessoa => { %>
+                    <li><a class="dropdown-item" href="#"><%=pessoa%></a></li>
+                    <% }) %>
+                    <% } %>            
+                    <% } %>
+                    <% }) %>
           </ul>
         </div>
 
@@ -49,9 +57,17 @@
             </svg> Amigos</button>
 
           <ul class="dropdown-menu bg-dark">
-            <li><a class="dropdown-item" href="#">Amigo 1</a></li>
-            <li><a class="dropdown-item" href="#">Amigo 2</a></li>
-            <li><a class="dropdown-item" href="#">Amigo 3</a></li>
+            <% users.forEach(user => { %>
+              <% if(user._id === currentUser[0].currentUserLogin) { %>
+                <% if (user.lista_amigos.length < 1) { %>
+                  <li><p class="dropdown-item">Não possui amigos</p></li>
+                  <% } else { %>
+                    <% user.lista_amigos.forEach(amigo => { %>
+                    <li><a class="dropdown-item" href="#"><%=amigo%></a></li>
+                    <% }) %>
+                    <% } %>            
+                    <% } %>
+                    <% }) %>
           </ul>
         </div>
       </div>
@@ -66,7 +82,7 @@
 
           <div class="usuario">
             <a href="#" class="d-flex align-items-center mt-2">
-              <span class="d-sm-inline">Samuel de Castro</span>
+              <span class="d-sm-inline"><%= currentUser[0].currentUserLogin%></span>
             </a>
           </div>
           <div class="inscricoes">
@@ -76,44 +92,17 @@
               <h5>Inscrições</h5>
               <li class="nav-item">
                 <% users.forEach(user => { %>
-                 <% if (user._id === currentUser.currentUserLogin) { %>
-                  <%  for (var jogo of user.lista_jogos) { %>
-                      <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <span class="ms-2 d-sm-inline"><%= jogo %></span> </a>
-              </li>
-                   <% } %>
+                 <% if (user._id === currentUser[0].currentUserLogin) { %>
+                  <%  user.lista_jogos.forEach(jogo => {  %>
+                    <li>
+                      <a href="#" class="nav-link px-0 align-middle">
+                        <span class="ms-2 d-sm-inline"><%=jogo%></span> </a>
+                    </li>
+                   <% }) %>
                  <% } %>
                <% })%>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <span class="ms-2 d-sm-inline">Jogo de RPG</span>
-                </a>
               </li>
-              <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <span class="ms-2 d-sm-inline">Jogo de RPG</span> </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <span class="ms-2 d-sm-inline">Jogo de RPG</span> </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <span class="ms-2 d-sm-inline">Jogo de RPG</span></a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <span class="ms-2 d-sm-inline">Jogo de RPG</span></a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <span class="ms-2 d-sm-inline">Jogo de RPG</span></a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <span class="ms-2 d-sm-inline">Jogo de RPG</span></a>
-              </li>
-
+             
           </div>
 
           <hr>
@@ -124,7 +113,7 @@
             </ul>
             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
               <li class="nav-item">
-                <a href="/homepage.html" class="nav-link px-0 align-middle">
+                <a href="/home" class="nav-link px-0 align-middle">
                   <span class="ms-2 d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                       fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                       <path
@@ -180,22 +169,27 @@
               <h4>Plataformas</h4>
             </button>
           </div>
+
+          gamesPlatforms.forEach(gamePlatform => {
+            <div class="card p-1 m-1">
+              <img class="card-img-top"
+                src="foto_usuario.png"
+                alt="Card image">
+              <div class="card-body">
+                <h5 class="card-title">Jogo de RPG</h5>
+              </div>
+            </div>
+          })
+
           <div class="card p-1 m-1">
             <img class="card-img-top"
-              src="https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              src="foto_usuario.png"
               alt="Card image">
             <div class="card-body">
               <h5 class="card-title">Jogo de RPG</h5>
             </div>
           </div>
-          <div class="card p-1 m-1">
-            <img class="card-img-top"
-              src="https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt="Card image">
-            <div class="card-body">
-              <h5 class="card-title">Jogo de RPG</h5>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -214,25 +208,24 @@
         </div>
 
         <div class="modal-body">
-          <form>
+          <form method="POST" action="cadastroJogo" enctype="multipart/form-data">
             <div class="mb-2">
               <label for="nome_jogo" class="col-form-label">Nome do jogo:</label>
-              <input type="text" class="form-control" id="nome_jogo">
+              <input type="text" class="form-control" id="nome_jogo" name="nome" require>
             </div>
             <div class="mb-2">
               <label for="descricao_jogo" class="col-form-label">Descrição:</label>
-              <input type="text" class="form-control" id="descricao_jogo"></input>
+              <input type="text" class="form-control" id="descricao_jogo" name="desc" require></input>
             </div>
 
             <div class="mb-2">
               <label for="imagem_jogo" class="col-form-label">Imagem de capa:</label>
-              <input type="file" class="form-control" id="imagem_jogo"></input>
+              <input type="file" class="form-control" id="imagem_jogo" name="imagem" require></input>
             </div>
-
+            <div class="modal-footer">
+              <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
+            </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-light">Cadastrar</button>
         </div>
       </div>
     </div>

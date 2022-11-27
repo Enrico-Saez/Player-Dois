@@ -38,6 +38,10 @@ const userSchema = new Schema({
     type: Number,
     required: true,
   },
+  lista_amigos: {
+    type: Object,
+    required: true,
+  },
   lista_jogos: {
     type: Object,
     required: true,
