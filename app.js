@@ -33,6 +33,86 @@ app.get("/termos", (req, res) => {
   res.status(200).render("termos");
 });
 
+app.get("/jogo/:jogo", (req, res) => {
+  const jogo = req.params.jogo;
+  User.find()
+    .then((users) => {
+      GamePlatform.find()
+        .then((gamesPlatforms) => {
+          CurrentUser.find()
+            .then((currentUser) => {
+              res.status(200).render("game", {
+                users,
+                gamesPlatforms,
+                currentUser,
+                jogoAtual: jogo,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get("/plataforma/:plataforma", (req, res) => {
+  const plataforma = req.params.plataforma;
+  User.find()
+    .then((users) => {
+      GamePlatform.find()
+        .then((gamesPlatforms) => {
+          CurrentUser.find()
+            .then((currentUser) => {
+              res.status(200).render("platform", {
+                users,
+                gamesPlatforms,
+                currentUser,
+                plataformaAtual: plataforma,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get("/plataforma", (req, res) => {
+  User.find()
+    .then((users) => {
+      GamePlatform.find()
+        .then((gamesPlatforms) => {
+          CurrentUser.find()
+            .then((currentUser) => {
+              res
+                .status(200)
+                .render("platform", { users, gamesPlatforms, currentUser });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 app.get("/home", (req, res) => {
   User.find()
     .then((users) => {

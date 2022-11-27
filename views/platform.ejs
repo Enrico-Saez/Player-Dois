@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/style_jogo_plataforma.css">
+  <title>Player Dois | <%= plataformaAtual %> </title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/home" class="navbar-brand text-decoration-none">PLAYER DOIS</a>
+
+
+      <div class="botoes">
+
+        <div class="dropdown-center">
+          <button class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-text-fill" viewBox="0 0 16 16">
+              <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM3.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
+            </svg> Mensagens</button>
+
+          <ul class="dropdown-menu bg-dark">
+            <% users.forEach(user => { %>
+            <% if(user._id === currentUser[0].currentUserLogin) { %>
+            <% if (user.pessoas_com_conversa.length < 1) { %>
+            <li>
+              <p class="dropdown-item">Não possui conversas</p>
+            </li>
+            <% } else { %>
+            <% user.pessoas_com_conversa.forEach(pessoa => { %>
+            <li><a class="dropdown-item" href="#"><%=pessoa%></a></li>
+            <% }) %>
+            <% } %>
+            <% } %>
+            <% }) %>
+          </ul>
+        </div>
+
+        <div class="dropdown-center">
+          <button class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+              <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+            </svg> Amigos</button>
+
+          <ul class="dropdown-menu bg-dark">
+            <% users.forEach(user => { %>
+            <% if(user._id === currentUser[0].currentUserLogin) { %>
+            <% if (user.lista_amigos.length < 1) { %>
+            <li>
+              <p class="dropdown-item">Não possui amigos</p>
+            </li>
+            <% } else { %>
+            <% user.lista_amigos.forEach(amigo => { %>
+            <li><a class="dropdown-item" href="#"><%=amigo%></a></li>
+            <% }) %>
+            <% } %>
+            <% } %>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row flex-nowrap">
+
+      <div class="col-auto col-sm-4 col-md-3 px-0">
+        <div class="sidebar d-flex flex-column align-items-center align-items-sm-start px-3 pt-2">
+
+          <div class="usuario">
+            <a href="#" class="d-flex align-items-center mt-2">
+              <span class="d-sm-inline"><%= currentUser[0].currentUserLogin%></span>
+            </a>
+          </div>
+          <div class="inscricoes">
+
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+              <hr>
+              <h5>Jogos inscritos</h5>
+              <li class="nav-item">
+                <% users.forEach(user => { %>
+                <% if (user._id === currentUser[0].currentUserLogin) { %>
+                <%  user.lista_jogos.forEach(jogo => {  %>
+              <li>
+                <a href="/jogo/<%=jogo%>" class="nav-link px-0 align-middle">
+                  <span class="ms-2 d-sm-inline"><%=jogo%></span> </a>
+              </li>
+              <% }); %>
+              <% } %>
+              <% });%>
+              </li>
+
+              <hr>
+              <h5>Plataformas inscritas</h5>
+              <li class="nav-item">
+                <% users.forEach(user => { %>
+                <% if (user._id === currentUser[0].currentUserLogin) { %>
+                <%  user.lista_plats.forEach(plataforma => {  %>
+              <li>
+                <a href="/plataforma/<%=plataforma%>" class="nav-link px-0 align-middle">
+                  <span class="ms-2 d-sm-inline"><%=plataforma%></span> </a>
+              </li>
+              <% }); %>
+              <% } %>
+              <% });%>
+              </li>
+
+          </div>
+
+          <hr>
+          <div class="funcoes_basicas">
+
+            <h5>Menu</h5>
+
+            </ul>
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+              <li class="nav-item">
+                <a href="/home" class="nav-link px-0 align-middle">
+                  <span class="ms-2 d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                    </svg> Página Inicial</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modal_jogo" class="nav-link px-0 align-middle">
+                  <span class="ms-2 d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                      <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                    </svg> Cadastrar Jogo</span> </a>
+              </li>
+              <li>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modal_plataforma" class="nav-link px-0 align-middle">
+                  <span class="ms-2 d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                      <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                    </svg> Cadastrar Plataforma</span> </a>
+              </li>
+              <li>
+                <a href="/" class="nav-link px-0 align-middle">
+                  <span class="ms-2 d-sm-inline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                      <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                    </svg> Sair</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parte DIFERENTE NAS PAGINAS -->
+      <div class="col pb-2 container_jogo">
+        <div class="jogo_plataforma">
+          <%gamesPlatforms.forEach(platform => { %>
+          <%if (platform._id === plataformaAtual) { %>
+          <div class="capa pt-5 pb-2 px-5" style="background-image: url(C:/Users/Enrico/Documents/GitHub/Player-Dois/public/794139efe5c93602b545e08d6208f4aa.jpg)">
+            <span class="nome_jogo">
+              <h5><%= plataformaAtual %> </h5>
+            </span>
+            <hr>
+            <span class="nome_jogo">
+              <form action="/inscreverPlataforma">
+                <p><input class="btn btn_inscreva-se" type="submit" name="botaoInscricao" value="Inscreva-se"></input></p>
+              </form>
+            </span>
+          </div>
+          <%} %>
+          <%}) %>
+          <div class="row">
+            <div class="lista col-6 pt-2">
+              <ul class="jogadores bg-">
+                <h6>Lista de Jogadores</h6>
+                <hr>
+                <%gamesPlatforms.forEach(platform => { %>
+                <%if (platform._id === plataformaAtual) { %>
+                <%platform.usuarios.forEach(usuario => { %>
+                <li class="row"><a href="/usuario/<%= usuario%>">Nome do Jogador</a></li>
+                <%}); %>
+                <%} %>
+                <%}); %>
+              </ul>
+            </div>
+            <div class="descricao col-6 pt-2 p-4">
+              <h6>Descrição da Plataforma</h6>
+              <hr>
+              <%gamesPlatforms.forEach(platform => { %>
+              <%if (platform._id === plataformaAtual) {%>
+              <p style="text-align: justify"><%=platform.descricao%></p>
+              <%}%>
+              <%})%>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODALS PARA CADASTRO DE JOGO E PLATAFORMA-->
+      <!-- M. Cadastro Jogo-->
+      <div class="modal fade" id="modal_jogo" tabindex="-1" aria-labelledby="modalJogo" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content p-2">
+            <div class="modal-header">
+
+              <h5 class="modal-title" id="exampleModalLabel">Cadastro de Jogo </h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+              <form method="POST" action="cadastroJogo" enctype="multipart/form-data">
+                <div class="mb-2">
+                  <label for="nome_jogo" class="col-form-label">Nome do jogo:</label>
+                  <input type="text" class="form-control" id="nome_jogo" name="nome" require>
+                </div>
+                <div class="mb-2">
+                  <label for="descricao_jogo" class="col-form-label">Descrição:</label>
+                  <input type="text" class="form-control" id="descricao_jogo" name="desc" require></input>
+                </div>
+
+                <div class="mb-2">
+                  <label for="imagem_jogo" class="col-form-label">Imagem de capa:</label>
+                  <input type="file" class="form-control" id="imagem_jogo" name="imagem" require></input>
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M. Cadastro Plataforma-->
+      <div class="modal fade" id="modal_plataforma" tabindex="-1" aria-labelledby="modalPlataforma" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content p-2">
+            <div class="modal-header">
+
+              <h5 class="modal-title" id="exampleModalLabel">Cadastro de Plataforma </h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+              <form method="POST" action="cadastroPlataforma" enctype="multipart/form-data">
+                <div class="mb-2">
+                  <label for="nome_plataforma" class="col-form-label">Nome da plataforma:</label>
+                  <input type="text" class="form-control" id="nome_plataforma" name="nome" required>
+                </div>
+                <div class="mb-2">
+                  <label for="descricao_plataforma" class="col-form-label">Descrição:</label>
+                  <input type="text" class="form-control" id="descricao_plataforma" name="desc" required></input>
+                </div>
+
+                <div class="mb-2">
+                  <label for="imagem_plataforma" class="col-form-label">Imagem de capa:</label>
+                  <input type="file" class="form-control" id="imagem_plataforma" name="imagem" required></input>
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+</body>
+
+</html>
