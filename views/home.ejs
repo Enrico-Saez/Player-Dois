@@ -174,7 +174,9 @@
                   <div class="card text-bg-dark" style="width: 15rem;">
                     <img src="/<%= games[j].imagem %>" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <p class="card-text"><%=games[j]._id%></p>
+                      <a href="/jogo/<%=games[j]._id%>">
+                        <p class="card-text"><%=games[j]._id%></p>
+                      </a>
                     </div>
                   </div>
                   <% j++ %>
@@ -192,7 +194,9 @@
                       <div class="card text-bg-dark" style="width: 15rem;">
                         <img src="/<%= games[j].imagem %>" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <p class="card-text"><%=games[j]._id%></p>
+                          <a href="/jogo/<%=games[j]._id%>">
+                            <p class="card-text"><%=games[j]._id%></p>
+                          </a>
                         </div>
                       </div>
                       <% j++ %>
@@ -216,7 +220,7 @@
 
         <div class="my-2">
           <h3 class="ms-3">Plataformas</h3>
-          <div id="carousel_jogos" class="carousel slide" data-ride="carousel">
+          <div id="carousel_plataformas" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <%var primeiro = true;%>
                       <% var j = 0 %>
@@ -228,7 +232,9 @@
                           <div class="card text-bg-dark" style="width: 15rem;">
                             <img src="/<%= platforms[j].imagem %>" class="card-img-top" alt="...">
                             <div class="card-body">
-                              <p class="card-text"><%=platforms[j]._id%></p>
+                              <a href="/plataforma/<%=platforms[j]._id%>">
+                                <p class="card-text"><%=platforms[j]._id%></p>
+                              </a>
                             </div>
                           </div>
                           <% j++ %>
@@ -246,7 +252,9 @@
                               <div class="card text-bg-dark" style="width: 15rem;">
                                 <img src="/<%= platforms[j].imagem %>" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                  <p class="card-text"><%=platforms[j]._id%></p>
+                                  <a href="/plataforma/<%=platforms[j]._id%>">
+                                    <p class="card-text"><%=platforms[j]._id%></p>
+                                  </a>
                                 </div>
                               </div>
                               <% j++ %>
@@ -259,10 +267,10 @@
                   <%}%>
                               <%}%>
             </div>
-            <a class="carousel-control-prev" href="#carousel_jogos" role="button" data-bs-slide="prev">
+            <a class="carousel-control-prev" href="#carousel_plataformas" role="button" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </a>
-            <a class="carousel-control-next" href="#carousel_jogos" role="button" data-bs-slide="next">
+            <a class="carousel-control-next" href="#carousel_plataformas" role="button" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </a>
           </div>
