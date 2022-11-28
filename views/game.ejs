@@ -162,14 +162,14 @@
         <div class="jogo_plataforma">
           <%gamesPlatforms.forEach(game => { %>
           <%if (game._id === jogoAtual) { %>
-          <div class="capa pt-5 pb-2 px-5" style="background-image: url(C:/Users/Enrico/Documents/GitHub/Player-Dois/public/794139efe5c93602b545e08d6208f4aa.jpg)">
+          <div class="capa pt-5 pb-2 px-5" style="background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgIBwgHCAgIBwcHBwoHBwcHBw8ICQcKIBEWIiARExMYKCggGBolGx8fITEhJSkrLjouFx8zODMsNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAJ8BPgMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAQIDB//EABkQAQEBAQEBAAAAAAAAAAAAAAABETFBAv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD2Gz1l0iX59gMwVQZVQEFAQxQBFAAAAAAAAAAAAAAAAAAAAAAAEUBBQGai1AdIqRQSz2I0lgILhgILhgILhgILhgILhgILhgILhgILhgILhgILhgILhgILhgILhgILhgILhgILhgIhQEqLUB0istAFCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxehegJUWoDcaZjUAKFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABi9C9QEABuNRmNQAoUEVAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAZvUL0BAAbipFgKUKCAAKgCgAAAAAAAAAAAAAAAAAAAAAAgKgAAAxeheoAADcVIoKn0qfQAgCgAAAogCiAKAAAAAAAAAAAAIAAAAAAAIAM3qLeoAUKDU40zONAqfQUEAAVAFEAUAAAAAAABUAAAAAAAAAAAAQFQAAAZvUW9QAolBucVIoKABkMigGQyABkMgAZDAAwwAMMADDAAwwAMMADDAAwwAMMADDAAyGQAMhkAEyGRQGPqe+MujP1PZwGUqpQbnFiRQUAFENBRNNBRNNBRNXYAGw2ABsNgAbDYAGw2ABsNgAbDYAGw2ABsNgAbDQA2GwATTQUTTQAAYs9Zroz9QH/9k=)">
             <span class="nome_jogo">
               <h5><%= jogoAtual %> </h5>
             </span>
             <hr>
             <span class="nome_jogo">
               <form action="/inscreverJogo">
-                <p><input class="btn btn_inscreva-se" type="submit" name="botaoInscricao" value="Inscreva-se"></input></p>
+                <p><input class="btn btn_inscreva-se" type="submit" name="<%=jogoAtual%>" value="<%=textoBotaoInscrever%>"></input></p>
               </form>
             </span>
           </div>

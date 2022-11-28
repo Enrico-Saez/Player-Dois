@@ -31,11 +31,11 @@ const userSchema = new Schema({
     required: true,
   },
   aval_hab: {
-    type: Number,
+    type: Object,
     required: true,
   },
   aval_sim: {
-    type: Number,
+    type: Object,
     required: true,
   },
   lista_amigos: {

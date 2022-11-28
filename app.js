@@ -41,11 +41,20 @@ app.get("/jogo/:jogo", (req, res) => {
         .then((gamesPlatforms) => {
           CurrentUser.find()
             .then((currentUser) => {
+              var textoBotaoInscrever = "Inscreva-se";
+              users.forEach((user) => {
+                if (user._id === currentUser[0].currentUserLogin) {
+                  if (user.lista_jogos.includes(jogo)) {
+                    textoBotaoInscrever = "Inscrito";
+                  }
+                }
+              });
               res.status(200).render("game", {
                 users,
                 gamesPlatforms,
                 currentUser,
                 jogoAtual: jogo,
+                textoBotaoInscrever,
               });
             })
             .catch((err) => {
@@ -69,36 +78,21 @@ app.get("/plataforma/:plataforma", (req, res) => {
         .then((gamesPlatforms) => {
           CurrentUser.find()
             .then((currentUser) => {
+              var textoBotaoInscrever = "Inscreva-se";
+              users.forEach((user) => {
+                if (user._id === currentUser[0].currentUserLogin) {
+                  if (user.lista_plats.includes(plataforma)) {
+                    textoBotaoInscrever = "Inscrito";
+                  }
+                }
+              });
               res.status(200).render("platform", {
                 users,
                 gamesPlatforms,
                 currentUser,
                 plataformaAtual: plataforma,
+                textoBotaoInscrever,
               });
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-app.get("/plataforma", (req, res) => {
-  User.find()
-    .then((users) => {
-      GamePlatform.find()
-        .then((gamesPlatforms) => {
-          CurrentUser.find()
-            .then((currentUser) => {
-              res
-                .status(200)
-                .render("platform", { users, gamesPlatforms, currentUser });
             })
             .catch((err) => {
               console.log(err);
@@ -146,8 +140,8 @@ app.post("/cadastroUsuario", (req, res) => {
     data_nasc: req.body.data_nasc,
     bio: " ",
     foto: "foto_usuario.png",
-    aval_hab: 0,
-    aval_sim: 0,
+    aval_hab: [],
+    aval_sim: [],
     lista_amigos: [],
     lista_jogos: [],
     lista_plats: [],
