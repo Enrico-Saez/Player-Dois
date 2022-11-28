@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/public/style_loginpage.css">
+  <title>Player Dois | Bem vindo!</title>
+</head>
+
+<body class="bg">
+  <div class="container caixa_login col-sm-12 col-md-6 float-end">
+    <div class="logo mt-5">
+      <p style="font-weight:bold; font-size: 300% ;" id="player-dois">PLAYER DOIS</p>
+      <p style="font-size: 120%;">Encontre pessoas para jogar!</p>
+    </div>
+
+    <div class="mb-5">
+    <form class="inputs" action="/login" method="POST" id="loginForm">
+      <div class="login form-group m-2">
+        <p id="campo_txt_login">Login</p>
+        <input type="text" class="form-control input_decoracao" placeholder="Insira seu usuário" name="login" id="login" required>
+      </div>
+
+      <div class="senha form-group m-2">
+        <p id="campo_txt_login">Senha</p>
+        <input type="password" class="form-control input_decoracao" placeholder="Insira sua senha" name="senha" id="senha" required>
+      </div>
+
+      <button class="botao_entrar my-2 btn" onclick="logar()">Entrar</button>
+    </form>
+    <p>Não possui uma conta? <a style="color: #5E60CD;" data-bs-toggle="modal" data-bs-target="#modal_cadastro" href="#">Cadastre-se</a></p>
+    </div>
+  </div>
+
+  <!-- POPUP CADASTRO -->
+
+  <div class="modal fade" id="modal_cadastro" tabindex="-1" aria-labelledby="modalCadastro" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content p-2">
+        <div class="modal-header">
+
+          <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form action="/cadastroUsuario" method="POST" id="cadastroForm">
+            <div class="mb-2">
+              <label for="cadastro_login" class="col-form-label">Login:</label>
+              <input type="text" class="form-control" id="cadastro_login" name="login" required>
+            </div>
+            <div class="mb-2">
+              <label for="cadastro_senha1" class="col-form-label">Senha:</label>
+              <input type="password" class="form-control" id="cadastro_senha1" name="senha" required></input>
+            </div>
+            <div class="mb-2">
+              <label for="cadastro_senha2" class="col-form-label">Confirmar senha:</label>
+              <input type="password" class="form-control" id="cadastro_senha2" name="conf_senha" required></input>
+            </div>
+            <div class="mb-2">
+              <label for="cadastro_nascimento" class="col-form-label">Data de Nascimento:</label>
+              <input type="date" class="form-control" id="cadastro_nascimento" name="data_nasc" required></input>
+            </div>
+            <div class="m-2 align-content-center">
+              <label for="cadastro_sexo">Sexo:</label>
+              <input type="radio" value="masculino" name="sexo" id="sexoMasc" required> Masculino
+              <input type="radio" value="feminino" name="sexo" id="sexoFem" required> Feminino
+            </div>
+            <div class="m-2">
+              <input type="checkbox" name="cadastro_termos" id="termos" required> Eu li e concordo com estes <a style="color: #5E60CD" href="/termos" target="_blank">termos e condições</a>.
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button class="btn btn-light" onclick="cadastrar()">Cadastrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function cadastrar() {
+      const cadastroForm = document.getElementById("cadastroForm");
+      const dataNasc = document.getElementById("cadastro_nascimento");
+      const senha = document.getElementById("cadastro_senha1");
+      const confirmarSenha = document.getElementById("cadastro_senha2");
+      const sexoMasc = document.getElementById("sexoMasc");
+      const sexoFem = document.getElementById("sexoFem");
+      const termos = document.getElementById("termos");
+      const formElements = Array.from(cadastroForm.elements);
+
+      for (var element of formElements) {
+        if (element.value.length < 1) {
+          alert("Todos os campos devem ser preenchidos.");
+          return;
+        }
+      }
+      if (getAge(dataNasc.value) < 13) {
+        alert("Você precisa ter ao menos 13 anos de idade para se cadastrar no Player Dois.");
+        return;
+      }
+      if (senha.value != confirmarSenha.value) {
+        alert("As senhas precisam ser iguais.");
+        return;
+      }
+      if (senha.value.length < 8) {
+        alert("A senha deve possuir ao menos 8 caracteres.");
+        return;
+      }
+      if (!sexoMasc.checked && !sexoFem.checked) {
+        alert("Selecione uma opção na categoria Sexo.");
+        return;
+      }
+      if (sexoMasc.checked && sexoFem.checked) {
+        alert("Selecione apenas uma opção na categoria Sexo.");
+        return;
+      }
+      if (!termos.checked) {
+        alert("É necessário concordar com os Termos de Uso para se cadastrar no Player Dois");
+        return;
+      }
+      alert("Cadastro bem sucedido")
+      cadastroForm.submit();
+    }
+
+    function logar() {
+      const loginForm = document.getElementById("loginForm");
+      const login = document.getElementById("login");
+      const senhaLogin = document.getElementById("senha");
+
+      if (login.value.length < 1 && senhaLogin.value.length < 1) {
+        alert("Todos os campos devem ser preenchidos.");
+        return;
+      }
+
+      loginForm.submit();
+    }
+
+    function getAge(dateString) {
+      var today = new Date();
+      var birthDate = new Date(dateString);
+      var age = today.getFullYear() - birthDate.getFullYear();
+      var m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age;
+    }
+  </script>
+</body>
+
+</html>
