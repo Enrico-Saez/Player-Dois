@@ -165,8 +165,12 @@
           <div id="carousel_jogos" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <%var primeiro = true;%>
+              <% var numeroItens = games.length/3 %>
+              <% if (!Number.isInteger(numeroItens)) { %>
+              <% numeroItens = Math.floor(numeroItens) + 1%>
+              <%} %>
               <% var j = 0 %>
-              <%for (let i = 0; i < Math.floor(games.length/3) + 1; i++) {%>
+              <%for (let i = 0; i < numeroItens; i++) {%>
               <%if (primeiro) {%>
               <div class="carousel-item active">
                 <div class="cards-wrapper">
@@ -223,8 +227,12 @@
           <div id="carousel_plataformas" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <%var primeiro = true;%>
+                      <% var numeroItens = platforms.length/3 %>
+                      <% if (!Number.isInteger(numeroItens)) { %>
+                      <% numeroItens = Math.floor(numeroItens) + 1%>
+                      <%} %>
                       <% var j = 0 %>
-                      <%for (let i = 0; i < Math.floor(platforms.length/3) + 1; i++) {%>
+                      <%for (let i = 0; i < numeroItens; i++) {%>
                       <%if (primeiro) {%>
                       <div class="carousel-item active">
                         <div class="cards-wrapper">
