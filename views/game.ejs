@@ -176,7 +176,7 @@
           </div>
           <%} %>
           <%}) %>
-          <div class="row">
+          <div class="row py-3">
             <div class="lista col-6 pt-2">
               <ul class="jogadores bg-">
                 <h6>Lista de Jogadores</h6>
@@ -184,7 +184,8 @@
                 <%gamesPlatforms.forEach(game => { %>
                 <%if (game._id === jogoAtual) { %>
                 <%game.usuarios.forEach(usuario => { %>
-                <li class="row"><a href="/usuario/<%= usuario%>">Nome do Jogador</a></li>
+                <li class="row"><a href="/usuario/<%= usuario%>"><%=usuario%></a></li>
+                <hr>
                 <%}); %>
                 <%} %>
                 <%}); %>

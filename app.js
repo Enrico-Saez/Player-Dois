@@ -78,11 +78,11 @@ app.get("/plataforma/:plataforma", (req, res) => {
         .then((gamesPlatforms) => {
           CurrentUser.find()
             .then((currentUser) => {
-              var textoBotaoInscrever = "Inscreva-se";
+              var textoBotaoInscrever = "Inscrever-se";
               users.forEach((user) => {
                 if (user._id === currentUser[0].currentUserLogin) {
                   if (user.lista_plats.includes(plataforma)) {
-                    textoBotaoInscrever = "Inscrito";
+                    textoBotaoInscrever = "Desinscrever-se";
                   }
                 }
               });
@@ -178,7 +178,7 @@ app.post("/cadastroJogo", (req, res) => {
       gamePlatform
         .save()
         .then((result) => {
-          res.redirect("/home");
+          res.redirect("/jogo/" + req.body.nome);
         })
         .catch((err) => {
           console.log(err);
@@ -205,7 +205,7 @@ app.post("/cadastroPlataforma", (req, res) => {
       gamePlatform
         .save()
         .then((result) => {
-          res.redirect("/home");
+          res.redirect("/plataforma/" + req.body.nome);
         })
         .catch((err) => {
           console.log(err);
@@ -216,45 +216,79 @@ app.post("/cadastroPlataforma", (req, res) => {
 
 app.post("/inscreverJogo", (req, res) => {
   User.find().then((users) => {
-    CurrentUser.find().then((currentUser) => {
-      users.forEach((user) => {
-        if (user._id === currentUser[0].currentUserLogin) {
-          if (user.lista_jogos.includes(req.body.jogoAtual)) {
-            var listaJogosAtualizada = user.lista_jogos;
-            listaJogosAtualizada.splice(
-              user.lista_jogos.indexOf(req.body.jogoAtual),
-              1
-            );
-            console.log(listaJogosAtualizada);
-            User.updateOne(
-              { _id: user._id },
-              { lista_jogos: listaJogosAtualizada },
-              function (err, docs) {
-                if (err) {
-                  console.log(err);
-                } else {
-                  console.log("Me desinscrevi");
-                  res.redirect("back");
+    GamePlatform.find().then((games) => {
+      CurrentUser.find().then((currentUser) => {
+        users.forEach((user) => {
+          if (user._id === currentUser[0].currentUserLogin) {
+            if (user.lista_jogos.includes(req.body.jogoAtual)) {
+              var listaJogosAtualizada = user.lista_jogos;
+              listaJogosAtualizada.splice(
+                user.lista_jogos.indexOf(req.body.jogoAtual),
+                1
+              );
+              User.updateOne(
+                { _id: user._id },
+                { lista_jogos: listaJogosAtualizada },
+                function (err, docs) {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    games.forEach((game) => {
+                      if (game._id === req.body.jogoAtual) {
+                        var listaUsuarios = game.usuarios;
+                        listaUsuarios.splice(
+                          game.usuarios.indexOf(user._id),
+                          1
+                        );
+                        GamePlatform.updateOne(
+                          { _id: req.body.jogoAtual },
+                          { usuarios: listaUsuarios },
+                          function (err, docs) {
+                            if (err) {
+                              console.log(err);
+                            } else {
+                              res.redirect("back");
+                            }
+                          }
+                        );
+                      }
+                    });
+                  }
                 }
-              }
-            );
-          } else {
-            var listaJogosAtualizada = user.lista_jogos;
-            listaJogosAtualizada.push(req.body.jogoAtual);
-            User.updateOne(
-              { _id: user._id },
-              { lista_jogos: listaJogosAtualizada },
-              function (err, docs) {
-                if (err) {
-                  console.log(err);
-                } else {
-                  console.log("Me inscrevi");
-                  res.redirect("back");
+              );
+            } else {
+              var listaJogosAtualizada = user.lista_jogos;
+              listaJogosAtualizada.push(req.body.jogoAtual);
+              User.updateOne(
+                { _id: user._id },
+                { lista_jogos: listaJogosAtualizada },
+                function (err, docs) {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    games.forEach((game) => {
+                      if (game._id === req.body.jogoAtual) {
+                        var listaUsuarios = game.usuarios;
+                        listaUsuarios.push(user._id);
+                        GamePlatform.updateOne(
+                          { _id: req.body.jogoAtual },
+                          { usuarios: listaUsuarios },
+                          function (err, docs) {
+                            if (err) {
+                              console.log(err);
+                            } else {
+                              res.redirect("back");
+                            }
+                          }
+                        );
+                      }
+                    });
+                  }
                 }
-              }
-            );
+              );
+            }
           }
-        }
+        });
       });
     });
   });
@@ -262,45 +296,79 @@ app.post("/inscreverJogo", (req, res) => {
 
 app.post("/inscreverPlataforma", (req, res) => {
   User.find().then((users) => {
-    CurrentUser.find().then((currentUser) => {
-      users.forEach((user) => {
-        if (user._id === currentUser[0].currentUserLogin) {
-          if (user.lista_plats.includes(req.body.plataformaAtual)) {
-            var listaPlataformasAtualizada = user.lista_plats;
-            listaPlataformasAtualizada.splice(
-              user.lista_plats.indexOf(req.body.plataformaAtual),
-              1
-            );
-            console.log(listaPlataformasAtualizada);
-            User.updateOne(
-              { _id: user._id },
-              { lista_plats: listaPlataformasAtualizada },
-              function (err, docs) {
-                if (err) {
-                  console.log(err);
-                } else {
-                  console.log("Me desinscrevi");
-                  res.redirect("back");
+    GamePlatform.find().then((platforms) => {
+      CurrentUser.find().then((currentUser) => {
+        users.forEach((user) => {
+          if (user._id === currentUser[0].currentUserLogin) {
+            if (user.lista_plats.includes(req.body.plataformaAtual)) {
+              var listaPlataformasAtualizada = user.lista_plats;
+              listaPlataformasAtualizada.splice(
+                user.lista_plats.indexOf(req.body.plataformaAtual),
+                1
+              );
+              User.updateOne(
+                { _id: user._id },
+                { lista_plats: listaPlataformasAtualizada },
+                function (err, docs) {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    platforms.forEach((platform) => {
+                      if (platform._id === req.body.plataformaAtual) {
+                        var listaUsuarios = platform.usuarios;
+                        listaUsuarios.splice(
+                          platform.usuarios.indexOf(user._id),
+                          1
+                        );
+                        GamePlatform.updateOne(
+                          { _id: req.body.plataformaAtual },
+                          { usuarios: listaUsuarios },
+                          function (err, docs) {
+                            if (err) {
+                              console.log(err);
+                            } else {
+                              res.redirect("back");
+                            }
+                          }
+                        );
+                      }
+                    });
+                  }
                 }
-              }
-            );
-          } else {
-            var listaPlataformasAtualizada = user.lista_plats;
-            listaPlataformasAtualizada.push(req.body.plataformaAtual);
-            User.updateOne(
-              { _id: user._id },
-              { lista_plats: listaPlataformasAtualizada },
-              function (err, docs) {
-                if (err) {
-                  console.log(err);
-                } else {
-                  console.log("Me inscrevi");
-                  res.redirect("back");
+              );
+            } else {
+              var listaPlataformasAtualizada = user.lista_plats;
+              listaPlataformasAtualizada.push(req.body.plataformaAtual);
+              User.updateOne(
+                { _id: user._id },
+                { lista_plats: listaPlataformasAtualizada },
+                function (err, docs) {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    platforms.forEach((platform) => {
+                      if (platform._id === req.body.plataformaAtual) {
+                        var listaUsuarios = platform.usuarios;
+                        listaUsuarios.push(user._id);
+                        GamePlatform.updateOne(
+                          { _id: req.body.plataformaAtual },
+                          { usuarios: listaUsuarios },
+                          function (err, docs) {
+                            if (err) {
+                              console.log(err);
+                            } else {
+                              res.redirect("back");
+                            }
+                          }
+                        );
+                      }
+                    });
+                  }
                 }
-              }
-            );
+              );
+            }
           }
-        }
+        });
       });
     });
   });
