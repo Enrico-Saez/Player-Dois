@@ -160,9 +160,23 @@ app.get("/home", (req, res) => {
         .then((gamesPlatforms) => {
           CurrentUser.find()
             .then((currentUser) => {
-              res
-                .status(200)
-                .render("home", { users, gamesPlatforms, currentUser });
+              const games = [];
+              const platforms = [];
+              gamesPlatforms.forEach((gamePlatform) => {
+                if (gamePlatform.ehJogo) {
+                  games.push(gamePlatform);
+                } else {
+                  platforms.push(gamePlatform);
+                }
+              });
+              console.log(games);
+              res.status(200).render("home", {
+                users,
+                gamesPlatforms,
+                currentUser,
+                games,
+                platforms,
+              });
             })
             .catch((err) => {
               console.log(err);

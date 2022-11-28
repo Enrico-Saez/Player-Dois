@@ -158,104 +158,118 @@
       </div>
 
       <!-- Parte DIFERENTE NAS PAGINAS -->
-      <div class="col py-2">
+      <div class="col py-3">
 
-        <h3>Jogos</h3>
-
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="cards-wrapper">
-                <div class="card">
-                  <img class="card-img-top" src="794139efe5c93602b545e08d6208f4aa.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="my-2">
+          <h3 class="ms-3">Jogos</h3>
+          <div id="carousel_jogos" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <%var primeiro = true;%>
+              <% var j = 0 %>
+              <%for (let i = 0; i < Math.floor(games.length/3) + 1; i++) {%>
+              <%if (primeiro) {%>
+              <div class="carousel-item active">
+                <div class="cards-wrapper">
+                  <%for (let n = 0; n < 3; n++) {%>
+                  <div class="card text-bg-dark" style="width: 15rem;">
+                    <img src="/<%= games[j].imagem %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text"><%=games[j]._id%></p>
+                    </div>
                   </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="794139efe5c93602b545e08d6208f4aa.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <% j++ %>
+                  <%if (j === games.length) { %>
+                  <%break;  %>
+                  <%} %>
+                  <%}%>
+                    </div>
                   </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="794139efe5c93602b545e08d6208f4aa.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <%primeiro = false;%>
+                  <%} else {%>
+                  <div class="carousel-item">
+                    <div class="cards-wrapper">
+                      <%for (let n = 0; n < 3; n++) {%>
+                      <div class="card text-bg-dark" style="width: 15rem;">
+                        <img src="/<%= games[j].imagem %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p class="card-text"><%=games[j]._id%></p>
+                        </div>
+                      </div>
+                      <% j++ %>
+                      <%if (j === games.length) { %>
+                      <%break;  %>
+                      <%} %>
+                      <%}%>                     
+                    </div>
                   </div>
-                </div>
-              </div>
+                  <%}%>
+                      <%}%>
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="cards-wrapper">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card d-none d-md-block">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card d-none d-md-block">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="cards-wrapper">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card d-none d-md-block">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card d-none d-md-block">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
+            <a class="carousel-control-prev" href="#carousel_jogos" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#carousel_jogos" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only"></span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only"></span>
-        </a>
+
+        <div class="my-2">
+          <h3 class="ms-3">Plataformas</h3>
+          <div id="carousel_jogos" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <%var primeiro = true;%>
+                      <% var j = 0 %>
+                      <%for (let i = 0; i < Math.floor(platforms.length/3) + 1; i++) {%>
+                      <%if (primeiro) {%>
+                      <div class="carousel-item active">
+                        <div class="cards-wrapper">
+                          <%for (let n = 0; n < 3; n++) {%>
+                          <div class="card text-bg-dark" style="width: 15rem;">
+                            <img src="/<%= platforms[j].imagem %>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <p class="card-text"><%=platforms[j]._id%></p>
+                            </div>
+                          </div>
+                          <% j++ %>
+                          <%if (j === platforms.length) { %>
+                          <%break;  %>
+                          <%} %>
+                          <%}%>
+                    </div>
+                  </div>
+                  <%primeiro = false;%>
+                          <%} else {%>
+                          <div class="carousel-item">
+                            <div class="cards-wrapper">
+                              <%for (let n = 0; n < 3; n++) {%>
+                              <div class="card text-bg-dark" style="width: 15rem;">
+                                <img src="/<%= platforms[j].imagem %>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <p class="card-text"><%=platforms[j]._id%></p>
+                                </div>
+                              </div>
+                              <% j++ %>
+                              <%if (j === platforms.length) { %>
+                              <%break;  %>
+                              <%} %>
+                              <%}%>                     
+                    </div>
+                  </div>
+                  <%}%>
+                              <%}%>
+            </div>
+            <a class="carousel-control-prev" href="#carousel_jogos" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#carousel_jogos" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
       </div>
 
     </div>
-  </div>
   </div>
 
 
