@@ -118,9 +118,15 @@ app.get("/usuario/:usuario", (req, res) => {
               const games = [];
               const platforms = [];
               gamesPlatforms.forEach((gamePlatform) => {
-                if (gamePlatform.ehJogo) {
+                if (
+                  gamePlatform.ehJogo &&
+                  gamePlatform.usuarios.includes(usuario)
+                ) {
                   games.push(gamePlatform);
-                } else {
+                } else if (
+                  !gamePlatform.ehJogo &&
+                  gamePlatform.usuarios.includes(usuario)
+                ) {
                   platforms.push(gamePlatform);
                 }
               });
