@@ -6,6 +6,13 @@ body {
   .navbar {
     background: linear-gradient(91.53deg, #5e60cd 0%, #7401b8 164.95%);
   }
+
+.img_perfil {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  
+}  
   
   .navbar-brand {
     color: white;
