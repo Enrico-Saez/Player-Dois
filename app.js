@@ -107,6 +107,43 @@ app.get("/plataforma/:plataforma", (req, res) => {
     });
 });
 
+app.get("/usuario/:usuario", (req, res) => {
+  const usuario = req.params.usuario;
+  User.find()
+    .then((users) => {
+      GamePlatform.find()
+        .then((gamesPlatforms) => {
+          CurrentUser.find()
+            .then((currentUser) => {
+              if (usuario === currentUser[0].currentUserLogin) {
+                res.status(200).render("own_profile", {
+                  users,
+                  gamesPlatforms,
+                  currentUser,
+                  usuario,
+                });
+              } else {
+                res.status(200).render("player_profile", {
+                  users,
+                  gamesPlatforms,
+                  currentUser,
+                  usuario,
+                });
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 app.get("/home", (req, res) => {
   User.find()
     .then((users) => {

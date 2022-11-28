@@ -9,6 +9,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/style_jogo_plataforma.css">
   <title>Player Dois | <%= plataformaAtual %> </title>
+  <%gamesPlatforms.forEach((platform) => { %>
+  <%if (platform._id === plataformaAtual) { %>
+  <style>
+    .capa {
+      background-image: url("/<%=platform.imagem%>");
+    }
+  </style>
+  <%} %>
+  <%}) %>
 </head>
 
 <body>
@@ -60,7 +69,7 @@
             </li>
             <% } else { %>
             <% user.lista_amigos.forEach(amigo => { %>
-            <li><a class="dropdown-item" href="#"><%=amigo%></a></li>
+            <li><a class="dropdown-item" href="/usuario/<%= usuario%>"><%=amigo%></a></li>
             <% }) %>
             <% } %>
             <% } %>
@@ -162,7 +171,7 @@
         <div class="jogo_plataforma">
           <%gamesPlatforms.forEach(platform => { %>
           <%if (platform._id === plataformaAtual) { %>
-          <div class="capa pt-5 pb-2 px-5" style="background-image: url(C:/Users/Enrico/Documents/GitHub/Player-Dois/public/794139efe5c93602b545e08d6208f4aa.jpg)">
+          <div class="capa pt-5 pb-2 px-5">
             <span class="nome_jogo">
               <h5><%= plataformaAtual %> </h5>
             </span>

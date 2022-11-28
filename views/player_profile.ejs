@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="style_homepage.css">
-  <title>Player Dois | Home</title>
+  <link rel="stylesheet" href="/style_player_profile.css">
+  <title>Player Dois | <%=usuario%></title>
 </head>
 
 <body>
@@ -60,7 +60,7 @@
             </li>
             <% } else { %>
             <% user.lista_amigos.forEach(amigo => { %>
-            <li><a class="dropdown-item" href="/usuario/<%= usuario%>"><%=amigo%></a></li>
+            <li><a class="dropdown-item" href="#"><%=amigo%></a></li>
             <% }) %>
             <% } %>
             <% } %>
@@ -159,103 +159,66 @@
 
       <!-- Parte DIFERENTE NAS PAGINAS -->
       <div class="col py-2">
-
-        <h3>Jogos</h3>
-
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="cards-wrapper">
-                <div class="card">
-                  <img class="card-img-top" src="794139efe5c93602b545e08d6208f4aa.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="794139efe5c93602b545e08d6208f4aa.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="794139efe5c93602b545e08d6208f4aa.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="info_basica">
+          <div class="row nome_foto_usuario p-1">
+            <h3 class="col-10">Samuel de Castro</h3>
+            <button class="btn col" data-bs-toggle="modal" data-bs-target="#modal_editar_perfil">Editar perfil</button>
           </div>
-          <div class="carousel-item">
-            <div class="cards-wrapper">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card d-none d-md-block">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card d-none d-md-block">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
+          <div class="bio p-1 m-1">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem earum asperiores illo
+              assumenda molestiae nostrum quae sequi error nisi officiis!</p>
           </div>
-          <div class="carousel-item">
-            <div class="cards-wrapper">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+        </div>
+        <hr>
+        <div class="carrossel_jogos">
+          OPS É +1 CARROSSEEEEEL
+        </div>
+        <div class="row pontuacoes p-4">
+          <div class="col-6 pontuacao_simpatia">
+            <h3>
+              <!--NOTA--> 10
+            </h3>
+            <p>Sua pontuação média para "simpatia"</p>
+          </div>
+          <div class="col-6 pontuacao_simpatia">
+            <h3>
+              <!--NOTA--> 9,5
+            </h3>
+            <p>Sua pontuação média para "nível de habilidade"</p>
+          </div>
+        </div>
+
+
+        <div class="modal fade" id="modal_editar_perfil" tabindex="-1" aria-labelledby="modalEditarPerfil" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content p-2">
+              <div class="modal-header">
+
+                <h5 class="modal-title" id="exampleModalLabel">Editar perfil</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="card d-none d-md-block">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+
+              <div class="modal-body">
+                <form>
+                  <div class="mb-2">
+                    <label for="editor_nome" class="col-form-label">Novo nome de usuário</label>
+                    <input type="text" class="form-control" id="editor_nome">
+                  </div>
+                  <div class="mb-2">
+                    <label for="editor_bio" class="col-form-label">Alterar Bio</label>
+                    <textarea class="form-control" id="editor_nome" rows="3" maxlength=""></textarea>
+                  </div>
+
+                </form>
               </div>
-              <div class="card d-none d-md-block">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-light">Salvar alterações</button>
               </div>
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only"></span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only"></span>
-        </a>
       </div>
-
     </div>
-  </div>
   </div>
 
 
