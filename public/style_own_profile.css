@@ -75,3 +75,22 @@ span:hover {
 .pontuacoes {
   text-align: center;
 }
+
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  margin: 0.2em;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: #5e60cd60;
+  width: 4vh;
+  height: 4vh;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}

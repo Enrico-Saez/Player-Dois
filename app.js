@@ -134,11 +134,11 @@ app.get("/usuario/:usuario", (req, res) => {
                   platforms,
                 });
               } else {
-                var textoBotaoAmigo = "Adicionar amigo";
+                var textoBotaoAmigo = "Seguir";
                 users.forEach((user) => {
                   if (user._id === currentUser[0].currentUserLogin) {
                     if (user.lista_amigos.includes(usuario)) {
-                      textoBotaoAmigo = "Remover amigo";
+                      textoBotaoAmigo = "Deixar de seguir";
                     }
                   }
                 });
