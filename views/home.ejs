@@ -35,7 +35,7 @@
             </li>
             <% } else { %>
             <% user.pessoas_com_conversa.forEach(pessoa => { %>
-            <li><a class="dropdown-item" href="#"><%=pessoa%></a></li>
+            <li><a class="dropdown-item" href="/usuario/<%=pessoa%>"><%=pessoa%></a></li>
             <% }) %>
             <% } %>
             <% } %>
@@ -78,7 +78,7 @@
         <div class="sidebar d-flex flex-column align-items-center align-items-sm-start px-3 pt-2">
 
           <div class="usuario">
-            <a href="#" class="d-flex align-items-center mt-2">
+            <a href="/usuario/<%= currentUser[0].currentUserLogin%>" class="d-flex align-items-center mt-2">
               <span class="d-sm-inline"><%= currentUser[0].currentUserLogin%></span>
             </a>
           </div>

@@ -78,7 +78,7 @@
         <div class="sidebar d-flex flex-column align-items-center align-items-sm-start px-3 pt-2">
 
           <div class="usuario">
-            <a href="#" class="d-flex align-items-center mt-2">
+            <a href="/usuario/<%= currentUser[0].currentUserLogin%>" class="d-flex align-items-center mt-2">
               <span class="d-sm-inline"><%= currentUser[0].currentUserLogin%></span>
             </a>
           </div>
@@ -181,229 +181,176 @@
         </div>
         <hr>
         <div class=" carrossel_jogos">
-          <div id="carousel_plataformas" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <%var primeiro = true;%>
-              <% var j = 0 %>
-              <%for (let i = 0; i < Math.floor(platforms.length/3) + 1; i++) {%>
-              <%if (primeiro) {%>
-              <div class="carousel-item active">
-                <div class="cards-wrapper">
-                  <%for (let n = 0; n < 3; n++) {%>
-                  <div class="card text-bg-dark" style="width: 15rem;">
-                    <img src="/<%= platforms[j].imagem %>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <a href="/plataforma/<%=platforms[j]._id%>">
-                        <p class="card-text"><%=platforms[j]._id%></p>
-                      </a>
-                    </div>
-                  </div>
-                  <% j++ %>
-                  <%if (j === platforms.length) { %>
-                  <%break;  %>
-                  <%} %>
-                  <%}%>
-                    </div>
-                  </div>
-                  <%primeiro = false;%>
-                  <%} else {%>
-                  <div class="carousel-item">
-                    <div class="cards-wrapper">
-                      <%for (let n = 0; n < 3; n++) {%>
-                      <div class="card text-bg-dark" style="width: 15rem;">
-                        <img src="/<%= platforms[j].imagem %>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <a href="/plataforma/<%=platforms[j]._id%>">
-                            <p class="card-text"><%=platforms[j]._id%></p>
-                          </a>
-                        </div>
-                      </div>
-                      <% j++ %>
-                      <%if (j === platforms.length) { %>
-                      <%break;  %>
-                      <%} %>
-                      <%}%>                     
-                    </div>
-                  </div>
-                  <%}%>
-                      <%}%>
-            </div>
-            <a class="carousel-control-prev" href="#carousel_plataformas" role="button" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </a>
-            <a class="carousel-control-next" href="#carousel_plataformas" role="button" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </a>
-          </div>
+
         </div>
         <div class="row pontuacoes p-4">
           <div class="col-6 pontuacao_simpatia">
             <%users.forEach((user) => { %>
-                      <%if (user._id === usuario) { %>
-                      <h3>
-                        <!--NOTA--> <%=user.aval_sim.reduce((a, b) => a + b, 0) / user.aval_sim.length;%>
-                      </h3>
-                      <% } %>
-                      <%}) %>
-                      <p>Pontuação média de <%=usuario%> para SIMPATIA</p>
-                    </div>
-                    <div class="col-6 pontuacao_simpatia">
-                      <%users.forEach((user) => { %>
-                      <%if (user._id === usuario) { %>
-                      <h3>
-                        <!--NOTA--> <%=user.aval_hab.reduce((a, b) => a + b, 0) / user.aval_hab.length;%>
-                      </h3>
-                      <% } %>
-                      <%}) %>
-                      <p>Pontuação média de <%=usuario%> para HABILIDADE</p>
-                    </div>
-                  </div>
+            <%if (user._id === usuario) { %>
+            <h3>
+              <!--NOTA--> <%=user.aval_sim.reduce((a, b) => a + b, 0) / user.aval_sim.length;%>
+            </h3>
+            <% } %>
+            <%}) %>
+            <p>Pontuação média de <%=usuario%> para SIMPATIA</p>
+          </div>
+          <div class="col-6 pontuacao_simpatia">
+            <%users.forEach((user) => { %>
+            <%if (user._id === usuario) { %>
+            <h3>
+              <!--NOTA--> <%=user.aval_hab.reduce((a, b) => a + b, 0) / user.aval_hab.length;%>
+            </h3>
+            <% } %>
+            <%}) %>
+            <p>Pontuação média de <%=usuario%> para HABILIDADE</p>
+          </div>
+        </div>
 
 
-                  <div class="modal fade" id="modal_avaliar" tabindex="-1" aria-labelledby="modalAvaliar" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content p-2">
-                        <div class="modal-header">
-                          <h3>Avaliação</h3>
-                        </div>
+        <div class="modal fade" id="modal_avaliar" tabindex="-1" aria-labelledby="modalAvaliar" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content p-2">
+              <div class="modal-header">
+                <h3>Avaliação</h3>
+              </div>
 
-                        <div class="modal-body">
-                          <form action="/avaliar" method="POST">
-                            <div class="avaliacao_modal mb-2">
+              <div class="modal-body">
+                <form action="/avaliar" method="POST">
+                  <div class="avaliacao_modal mb-2">
 
-                              <label for="habilidade" class="col-form-label row">Qual nível de habilidade deste
-                                usuário?</label>
-                              <input type="radio" name="habilidade" id="1" value="1" required />
-                              <label for="1">1</label>
-                              <input type="radio" name="habilidade" id="2" value="2" required />
-                              <label for="2">2</label>
-                              <input type="radio" name="habilidade" id="3" value="3" required />
-                              <label for="3">3</label>
-                              <input type="radio" name="habilidade" id="4" value="4" required />
-                              <label for="4">4</label>
-                              <input type="radio" name="habilidade" id="5" value="5" required />
-                              <label for="5">5</label>
-                              <input type="radio" name="habilidade" id="6" value="6" required />
-                              <label for="6">6</label>
-                              <input type="radio" name="habilidade" id="7" value="7" required />
-                              <label for="7">7</label>
-                              <input type="radio" name="habilidade" id="8" value="8" required />
-                              <label for="8">8</label>
-                              <input type="radio" name="habilidade" id="9" value="9" required />
-                              <label for="9">9</label>
-                              <input type="radio" name="habilidade" id="10" value="10" required />
-                              <label for="10">10</label>
+                    <label for="habilidade" class="col-form-label row">Qual nível de habilidade deste
+                      usuário?</label>
+                    <input type="radio" name="habilidade" id="1" value="1" required />
+                    <label for="1">1</label>
+                    <input type="radio" name="habilidade" id="2" value="2" required />
+                    <label for="2">2</label>
+                    <input type="radio" name="habilidade" id="3" value="3" required />
+                    <label for="3">3</label>
+                    <input type="radio" name="habilidade" id="4" value="4" required />
+                    <label for="4">4</label>
+                    <input type="radio" name="habilidade" id="5" value="5" required />
+                    <label for="5">5</label>
+                    <input type="radio" name="habilidade" id="6" value="6" required />
+                    <label for="6">6</label>
+                    <input type="radio" name="habilidade" id="7" value="7" required />
+                    <label for="7">7</label>
+                    <input type="radio" name="habilidade" id="8" value="8" required />
+                    <label for="8">8</label>
+                    <input type="radio" name="habilidade" id="9" value="9" required />
+                    <label for="9">9</label>
+                    <input type="radio" name="habilidade" id="10" value="10" required />
+                    <label for="10">10</label>
 
-                              <hr>
+                    <hr>
 
-                              <label for="simpatia" class="col-form-label row">Qual nível de simpatia deste
-                                usuário?</label>
-                              <input type="radio" name="simpatia" id="1" value="1" required />
-                              <label for="1">1</label>
-                              <input type="radio" name="simpatia" id="2" value="2" required />
-                              <label for="2">2</label>
-                              <input type="radio" name="simpatia" id="3" value="3" required />
-                              <label for="3">3</label>
-                              <input type="radio" name="simpatia" id="4" value="4" required />
-                              <label for="4">4</label>
-                              <input type="radio" name="simpatia" id="5" value="5" required />
-                              <label for="5">5</label>
-                              <input type="radio" name="simpatia" id="6" value="6" required />
-                              <label for="6">6</label>
-                              <input type="radio" name="simpatia" id="7" value="7" required />
-                              <label for="7">7</label>
-                              <input type="radio" name="simpatia" id="8" value="8" required />
-                              <label for="8">8</label>
-                              <input type="radio" name="simpatia" id="9" value="9" required />
-                              <label for="9">9</label>
-                              <input type="radio" name="simpatia" id="10" value="10" required />
-                              <label for="10">10</label>
+                    <label for="simpatia" class="col-form-label row">Qual nível de simpatia deste
+                      usuário?</label>
+                    <input type="radio" name="simpatia" id="1" value="1" required />
+                    <label for="1">1</label>
+                    <input type="radio" name="simpatia" id="2" value="2" required />
+                    <label for="2">2</label>
+                    <input type="radio" name="simpatia" id="3" value="3" required />
+                    <label for="3">3</label>
+                    <input type="radio" name="simpatia" id="4" value="4" required />
+                    <label for="4">4</label>
+                    <input type="radio" name="simpatia" id="5" value="5" required />
+                    <label for="5">5</label>
+                    <input type="radio" name="simpatia" id="6" value="6" required />
+                    <label for="6">6</label>
+                    <input type="radio" name="simpatia" id="7" value="7" required />
+                    <label for="7">7</label>
+                    <input type="radio" name="simpatia" id="8" value="8" required />
+                    <label for="8">8</label>
+                    <input type="radio" name="simpatia" id="9" value="9" required />
+                    <label for="9">9</label>
+                    <input type="radio" name="simpatia" id="10" value="10" required />
+                    <label for="10">10</label>
 
-                              <div class="modal-footer">
-                                <p hidden><input type="text" name="usuario" value="<%=usuario%>"></input></p>
-                                <input type="submit" class="btn btn-outline-light" value="Confirmar"></input>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-
-                      </div>
+                    <div class="modal-footer">
+                      <p hidden><input type="text" name="usuario" value="<%=usuario%>"></input></p>
+                      <input type="submit" class="btn btn-outline-light" value="Confirmar"></input>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- MODALS PARA CADASTRO DE JOGO E PLATAFORMA-->
+  <!-- M. Cadastro Jogo-->
+  <div class="modal fade" id="modal_jogo" tabindex="-1" aria-labelledby="modalJogo" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content p-2">
+        <div class="modal-header">
+
+          <h5 class="modal-title" id="exampleModalLabel">Cadastro de Jogo </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form method="POST" action="cadastroJogo" enctype="multipart/form-data">
+            <div class="mb-2">
+              <label for="nome_jogo" class="col-form-label">Nome do jogo:</label>
+              <input type="text" class="form-control" id="nome_jogo" name="nome" require>
+            </div>
+            <div class="mb-2">
+              <label for="descricao_jogo" class="col-form-label">Descrição:</label>
+              <input type="text" class="form-control" id="descricao_jogo" name="desc" require></input>
             </div>
 
+            <div class="mb-2">
+              <label for="imagem_jogo" class="col-form-label">Imagem de capa:</label>
+              <input type="file" class="form-control" id="imagem_jogo" name="imagem" require></input>
+            </div>
+            <div class="modal-footer">
+              <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- M. Cadastro Plataforma-->
+  <div class="modal fade" id="modal_plataforma" tabindex="-1" aria-labelledby="modalPlataforma" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content p-2">
+        <div class="modal-header">
 
-            <!-- MODALS PARA CADASTRO DE JOGO E PLATAFORMA-->
-            <!-- M. Cadastro Jogo-->
-            <div class="modal fade" id="modal_jogo" tabindex="-1" aria-labelledby="modalJogo" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content p-2">
-                  <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cadastro de Plataforma </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
 
-                    <h5 class="modal-title" id="exampleModalLabel">Cadastro de Jogo </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-
-                  <div class="modal-body">
-                    <form method="POST" action="cadastroJogo" enctype="multipart/form-data">
-                      <div class="mb-2">
-                        <label for="nome_jogo" class="col-form-label">Nome do jogo:</label>
-                        <input type="text" class="form-control" id="nome_jogo" name="nome" require>
-                      </div>
-                      <div class="mb-2">
-                        <label for="descricao_jogo" class="col-form-label">Descrição:</label>
-                        <input type="text" class="form-control" id="descricao_jogo" name="desc" require></input>
-                      </div>
-
-                      <div class="mb-2">
-                        <label for="imagem_jogo" class="col-form-label">Imagem de capa:</label>
-                        <input type="file" class="form-control" id="imagem_jogo" name="imagem" require></input>
-                      </div>
-                      <div class="modal-footer">
-                        <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
+        <div class="modal-body">
+          <form method="POST" action="cadastroPlataforma" enctype="multipart/form-data">
+            <div class="mb-2">
+              <label for="nome_plataforma" class="col-form-label">Nome da plataforma:</label>
+              <input type="text" class="form-control" id="nome_plataforma" name="nome" required>
+            </div>
+            <div class="mb-2">
+              <label for="descricao_plataforma" class="col-form-label">Descrição:</label>
+              <input type="text" class="form-control" id="descricao_plataforma" name="desc" required></input>
             </div>
 
-            <!-- M. Cadastro Plataforma-->
-            <div class="modal fade" id="modal_plataforma" tabindex="-1" aria-labelledby="modalPlataforma" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content p-2">
-                  <div class="modal-header">
-
-                    <h5 class="modal-title" id="exampleModalLabel">Cadastro de Plataforma </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-
-                  <div class="modal-body">
-                    <form method="POST" action="cadastroPlataforma" enctype="multipart/form-data">
-                      <div class="mb-2">
-                        <label for="nome_plataforma" class="col-form-label">Nome da plataforma:</label>
-                        <input type="text" class="form-control" id="nome_plataforma" name="nome" required>
-                      </div>
-                      <div class="mb-2">
-                        <label for="descricao_plataforma" class="col-form-label">Descrição:</label>
-                        <input type="text" class="form-control" id="descricao_plataforma" name="desc" required></input>
-                      </div>
-
-                      <div class="mb-2">
-                        <label for="imagem_plataforma" class="col-form-label">Imagem de capa:</label>
-                        <input type="file" class="form-control" id="imagem_plataforma" name="imagem" required></input>
-                      </div>
-                      <div class="modal-footer">
-                        <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
+            <div class="mb-2">
+              <label for="imagem_plataforma" class="col-form-label">Imagem de capa:</label>
+              <input type="file" class="form-control" id="imagem_plataforma" name="imagem" required></input>
             </div>
+            <div class="modal-footer">
+              <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 </body>
