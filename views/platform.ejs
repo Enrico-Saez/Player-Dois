@@ -168,8 +168,9 @@
             </span>
             <hr>
             <span class="nome_jogo">
-              <form action="/inscreverPlataforma">
-                <p><input class="btn btn_inscreva-se" type="submit" name="botaoInscricao" value="<%=textoBotaoInscrever%>"></input></p>
+              <form action="/inscreverPlataforma" method="POST">
+                <p hidden><input type="text" name="plataformaAtual" value="<%=plataformaAtual%>"></input></p>
+                <p><input class="btn btn_inscreva-se" type="submit" value="<%=textoBotaoInscrever%>"></input></p>
               </form>
             </span>
           </div>

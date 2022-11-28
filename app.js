@@ -41,11 +41,11 @@ app.get("/jogo/:jogo", (req, res) => {
         .then((gamesPlatforms) => {
           CurrentUser.find()
             .then((currentUser) => {
-              var textoBotaoInscrever = "Inscreva-se";
+              var textoBotaoInscrever = "Inscrever-se";
               users.forEach((user) => {
                 if (user._id === currentUser[0].currentUserLogin) {
                   if (user.lista_jogos.includes(jogo)) {
-                    textoBotaoInscrever = "Inscrito";
+                    textoBotaoInscrever = "Desinscrever-se";
                   }
                 }
               });
@@ -211,6 +211,98 @@ app.post("/cadastroPlataforma", (req, res) => {
           console.log(err);
         });
     }
+  });
+});
+
+app.post("/inscreverJogo", (req, res) => {
+  User.find().then((users) => {
+    CurrentUser.find().then((currentUser) => {
+      users.forEach((user) => {
+        if (user._id === currentUser[0].currentUserLogin) {
+          if (user.lista_jogos.includes(req.body.jogoAtual)) {
+            var listaJogosAtualizada = user.lista_jogos;
+            listaJogosAtualizada.splice(
+              user.lista_jogos.indexOf(req.body.jogoAtual),
+              1
+            );
+            console.log(listaJogosAtualizada);
+            User.updateOne(
+              { _id: user._id },
+              { lista_jogos: listaJogosAtualizada },
+              function (err, docs) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("Me desinscrevi");
+                  res.redirect("back");
+                }
+              }
+            );
+          } else {
+            var listaJogosAtualizada = user.lista_jogos;
+            listaJogosAtualizada.push(req.body.jogoAtual);
+            User.updateOne(
+              { _id: user._id },
+              { lista_jogos: listaJogosAtualizada },
+              function (err, docs) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("Me inscrevi");
+                  res.redirect("back");
+                }
+              }
+            );
+          }
+        }
+      });
+    });
+  });
+});
+
+app.post("/inscreverPlataforma", (req, res) => {
+  User.find().then((users) => {
+    CurrentUser.find().then((currentUser) => {
+      users.forEach((user) => {
+        if (user._id === currentUser[0].currentUserLogin) {
+          if (user.lista_plats.includes(req.body.plataformaAtual)) {
+            var listaPlataformasAtualizada = user.lista_plats;
+            listaPlataformasAtualizada.splice(
+              user.lista_plats.indexOf(req.body.plataformaAtual),
+              1
+            );
+            console.log(listaPlataformasAtualizada);
+            User.updateOne(
+              { _id: user._id },
+              { lista_plats: listaPlataformasAtualizada },
+              function (err, docs) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("Me desinscrevi");
+                  res.redirect("back");
+                }
+              }
+            );
+          } else {
+            var listaPlataformasAtualizada = user.lista_plats;
+            listaPlataformasAtualizada.push(req.body.plataformaAtual);
+            User.updateOne(
+              { _id: user._id },
+              { lista_plats: listaPlataformasAtualizada },
+              function (err, docs) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("Me inscrevi");
+                  res.redirect("back");
+                }
+              }
+            );
+          }
+        }
+      });
+    });
   });
 });
 
