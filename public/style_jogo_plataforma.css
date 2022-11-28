@@ -88,11 +88,11 @@ span:hover {
 }
 
 .nome_jogo {
-  text-shadow: #111111 2px 2px 8px;
+  text-shadow: #000000 2px 2px 2px;
 }
 
 .btn_inscreva-se {
-  background-color: #5e60cdc2;
+  background-color: #5e60cdea;
   color: #ffffff;
   border: white 2px solid;
 }

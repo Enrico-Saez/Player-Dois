@@ -60,7 +60,7 @@
             </li>
             <% } else { %>
             <% user.lista_amigos.forEach(amigo => { %>
-            <li><a class="dropdown-item" href="#"><%=amigo%></a></li>
+            <li><a class="dropdown-item" href="/usuario/<%=amigo%>"><%=amigo%></a></li>
             <% }) %>
             <% } %>
             <% } %>
@@ -158,68 +158,129 @@
       </div>
 
       <!-- Parte DIFERENTE NAS PAGINAS -->
-      <div class="col py-2">
+      <div class="col py-3">
         <div class="info_basica">
           <div class="row nome_foto_usuario p-1">
-            <h3 class="col-10">Samuel de Castro</h3>
-            <button class="btn col" data-bs-toggle="modal" data-bs-target="#modal_editar_perfil">Editar perfil</button>
+            <h3 class="col-9"><%=usuario%></h3>
+            <div class="col-3">
+              <button class="btn col" data-bs-toggle="modal" data-bs-target="#modal_avaliar">Avaliar</button>
+              <form action="/seguirJogador" method="POST">
+                <p hidden><input type="text" name="usuario" value="<%=usuario%>"></input></p>
+                <p><input class="btn btn_inscreva-se" type="submit" value="<%=textoBotaoAmigo%>"></input></p>
+              </form>
+            </div>
           </div>
+
           <div class="bio p-1 m-1">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem earum asperiores illo
-              assumenda molestiae nostrum quae sequi error nisi officiis!</p>
+            <%users.forEach((user) => { %>
+            <%if (user._id === usuario) { %>
+            <p><%=user.bio%></p>
+            <%} %>
+            <%})%>
           </div>
         </div>
         <hr>
-        <div class="carrossel_jogos">
+        <div class=" carrossel_jogos">
           OPS É +1 CARROSSEEEEEL
         </div>
         <div class="row pontuacoes p-4">
           <div class="col-6 pontuacao_simpatia">
+            <%users.forEach((user) => { %>
+            <%if (user._id === usuario) { %>
             <h3>
-              <!--NOTA--> 10
+              <!--NOTA--> <%=user.aval_sim.reduce((a, b) => a + b, 0) / user.aval_sim.length;%>
             </h3>
-            <p>Sua pontuação média para "simpatia"</p>
+            <% } %>
+            <%}) %>
+            <p>Pontuação média de <%=usuario%> para SIMPATIA</p>
           </div>
           <div class="col-6 pontuacao_simpatia">
+            <%users.forEach((user) => { %>
+            <%if (user._id === usuario) { %>
             <h3>
-              <!--NOTA--> 9,5
+              <!--NOTA--> <%=user.aval_hab.reduce((a, b) => a + b, 0) / user.aval_hab.length;%>
             </h3>
-            <p>Sua pontuação média para "nível de habilidade"</p>
+            <% } %>
+            <%}) %>
+            <p>Pontuação média de <%=usuario%> para HABILIDADE</p>
           </div>
         </div>
 
 
-        <div class="modal fade" id="modal_editar_perfil" tabindex="-1" aria-labelledby="modalEditarPerfil" aria-hidden="true">
+        <div class="modal fade" id="modal_avaliar" tabindex="-1" aria-labelledby="modalAvaliar" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content p-2">
               <div class="modal-header">
-
-                <h5 class="modal-title" id="exampleModalLabel">Editar perfil</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h3>Avaliação</h3>
               </div>
 
               <div class="modal-body">
-                <form>
-                  <div class="mb-2">
-                    <label for="editor_nome" class="col-form-label">Novo nome de usuário</label>
-                    <input type="text" class="form-control" id="editor_nome">
-                  </div>
-                  <div class="mb-2">
-                    <label for="editor_bio" class="col-form-label">Alterar Bio</label>
-                    <textarea class="form-control" id="editor_nome" rows="3" maxlength=""></textarea>
-                  </div>
+                <form action="/avaliar" method="POST">
+                  <div class="avaliacao_modal mb-2">
 
+                    <label for="habilidade" class="col-form-label row">Qual nível de habilidade deste
+                      usuário?</label>
+                    <input type="radio" name="habilidade" id="1" value="1" required />
+                    <label for="1">1</label>
+                    <input type="radio" name="habilidade" id="2" value="2" required />
+                    <label for="2">2</label>
+                    <input type="radio" name="habilidade" id="3" value="3" required />
+                    <label for="3">3</label>
+                    <input type="radio" name="habilidade" id="4" value="4" required />
+                    <label for="4">4</label>
+                    <input type="radio" name="habilidade" id="5" value="5" required />
+                    <label for="5">5</label>
+                    <input type="radio" name="habilidade" id="6" value="6" required />
+                    <label for="6">6</label>
+                    <input type="radio" name="habilidade" id="7" value="7" required />
+                    <label for="7">7</label>
+                    <input type="radio" name="habilidade" id="8" value="8" required />
+                    <label for="8">8</label>
+                    <input type="radio" name="habilidade" id="9" value="9" required />
+                    <label for="9">9</label>
+                    <input type="radio" name="habilidade" id="10" value="10" required />
+                    <label for="10">10</label>
+
+                    <hr>
+
+                    <label for="simpatia" class="col-form-label row">Qual nível de simpatia deste
+                      usuário?</label>
+                    <input type="radio" name="simpatia" id="1" value="1" required />
+                    <label for="1">1</label>
+                    <input type="radio" name="simpatia" id="2" value="2" required />
+                    <label for="2">2</label>
+                    <input type="radio" name="simpatia" id="3" value="3" required />
+                    <label for="3">3</label>
+                    <input type="radio" name="simpatia" id="4" value="4" required />
+                    <label for="4">4</label>
+                    <input type="radio" name="simpatia" id="5" value="5" required />
+                    <label for="5">5</label>
+                    <input type="radio" name="simpatia" id="6" value="6" required />
+                    <label for="6">6</label>
+                    <input type="radio" name="simpatia" id="7" value="7" required />
+                    <label for="7">7</label>
+                    <input type="radio" name="simpatia" id="8" value="8" required />
+                    <label for="8">8</label>
+                    <input type="radio" name="simpatia" id="9" value="9" required />
+                    <label for="9">9</label>
+                    <input type="radio" name="simpatia" id="10" value="10" required />
+                    <label for="10">10</label>
+
+                    <div class="modal-footer">
+                      <p hidden><input type="text" name="usuario" value="<%=usuario%>"></input></p>
+                      <input type="submit" class="btn btn-outline-light" value="Confirmar"></input>
+                    </div>
+                  </div>
                 </form>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-light">Salvar alterações</button>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 
 
   <!-- MODALS PARA CADASTRO DE JOGO E PLATAFORMA-->

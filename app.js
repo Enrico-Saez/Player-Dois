@@ -123,11 +123,20 @@ app.get("/usuario/:usuario", (req, res) => {
                   usuario,
                 });
               } else {
+                var textoBotaoAmigo = "Adicionar amigo";
+                users.forEach((user) => {
+                  if (user._id === currentUser[0].currentUserLogin) {
+                    if (user.lista_amigos.includes(usuario)) {
+                      textoBotaoAmigo = "Remover amigo";
+                    }
+                  }
+                });
                 res.status(200).render("player_profile", {
                   users,
                   gamesPlatforms,
                   currentUser,
                   usuario,
+                  textoBotaoAmigo,
                 });
               }
             })
@@ -175,10 +184,10 @@ app.post("/cadastroUsuario", (req, res) => {
     nome: req.body.login,
     sexo: req.body.sexo,
     data_nasc: req.body.data_nasc,
-    bio: " ",
+    bio: "Escreva algo sobre você aqui!",
     foto: "foto_usuario.png",
-    aval_hab: [],
-    aval_sim: [],
+    aval_hab: [10],
+    aval_sim: [10],
     lista_amigos: [],
     lista_jogos: [],
     lista_plats: [],
@@ -411,6 +420,48 @@ app.post("/inscreverPlataforma", (req, res) => {
   });
 });
 
+app.post("/seguirJogador", (req, res) => {
+  const jogador = req.body.usuario;
+  User.find().then((users) => {
+    CurrentUser.find().then((currentUser) => {
+      users.forEach((user) => {
+        if (user._id === currentUser[0].currentUserLogin) {
+          if (user.lista_amigos.includes(jogador)) {
+            var listaAmigosAtualizada = user.lista_amigos;
+            listaAmigosAtualizada.splice(user.lista_amigos.indexOf(jogador), 1);
+            User.updateOne(
+              { _id: currentUser[0].currentUserLogin },
+              { lista_amigos: listaAmigosAtualizada },
+              function (err, docs) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("Removi amigo");
+                  res.redirect("back");
+                }
+              }
+            );
+          } else {
+            var listaAmigosAtualizada = user.lista_amigos;
+            listaAmigosAtualizada.push(jogador);
+            User.updateOne(
+              { _id: currentUser[0].currentUserLogin },
+              { lista_amigos: listaAmigosAtualizada },
+              function (err, docs) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  res.redirect("back");
+                }
+              }
+            );
+          }
+        }
+      });
+    });
+  });
+});
+
 app.post("/login", (req, res) => {
   User.findById(req.body.login, (err, docs) => {
     if (err) {
@@ -435,7 +486,29 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.post("/enviarMensagem", (req, res) => {});
+app.post("/avaliar", (req, res) => {
+  User.find().then((users) => {
+    users.forEach((user) => {
+      if (user._id == req.body.usuario) {
+        const lista_aval_hab = user.aval_hab;
+        lista_aval_hab.push(Number(req.body.habilidade));
+        const lista_aval_sim = user.aval_sim;
+        lista_aval_sim.push(Number(req.body.simpatia));
+        User.updateOne(
+          { _id: user._id },
+          { aval_hab: lista_aval_hab, aval_sim: lista_aval_sim },
+          function (err, docs) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.redirect("back");
+            }
+          }
+        );
+      }
+    });
+  });
+});
 
 app.use((req, res) => {
   res.status(404).render("404");

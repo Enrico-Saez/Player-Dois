@@ -60,7 +60,7 @@
             </li>
             <% } else { %>
             <% user.lista_amigos.forEach(amigo => { %>
-            <li><a class="dropdown-item" href="#"><%=amigo%></a></li>
+            <li><a class="dropdown-item" href="/usuario/<%=amigo%>"><%=amigo%></a></li>
             <% }) %>
             <% } %>
             <% } %>
@@ -175,16 +175,24 @@
         </div>
         <div class="row pontuacoes p-4">
           <div class="col-6 pontuacao_simpatia">
+            <%users.forEach((user) => { %>
+            <%if (user._id === usuario) { %>
             <h3>
-              <!--NOTA--> 10
+              <!--NOTA--> <%=user.aval_sim.reduce((a, b) => a + b, 0) / user.aval_sim.length;%>
             </h3>
-            <p>Sua pontuação média para "simpatia"</p>
+            <% } %>
+            <%}) %>
+            <p>Sua pontuação média para SIMPATIA</p>
           </div>
           <div class="col-6 pontuacao_simpatia">
+            <%users.forEach((user) => { %>
+            <%if (user._id === usuario) { %>
             <h3>
-              <!--NOTA--> 9,5
+              <!--NOTA--> <%=user.aval_hab.reduce((a, b) => a + b, 0) / user.aval_hab.length;%>
             </h3>
-            <p>Sua pontuação média para "nível de habilidade"</p>
+            <% } %>
+            <%}) %>
+            <p>Sua pontuação média para HABILIDADE</p>
           </div>
         </div>
 
