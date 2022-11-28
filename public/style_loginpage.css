@@ -23,12 +23,23 @@ body {
   align-items: center;
 }
 .logo {
-  line-height: 0;
+  line-height: 0.5;
 }
 .inputs {
   padding: 10%;
   padding-bottom: 15%;
 }
+
+.input_decoracao {
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 25px;
+  color: white;
+}
+.input_decoracao:focus {
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+}
+
 #campo_txt_login {
   text-align: left;
   margin: auto;

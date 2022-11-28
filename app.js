@@ -115,12 +115,23 @@ app.get("/usuario/:usuario", (req, res) => {
         .then((gamesPlatforms) => {
           CurrentUser.find()
             .then((currentUser) => {
+              const games = [];
+              const platforms = [];
+              gamesPlatforms.forEach((gamePlatform) => {
+                if (gamePlatform.ehJogo) {
+                  games.push(gamePlatform);
+                } else {
+                  platforms.push(gamePlatform);
+                }
+              });
               if (usuario === currentUser[0].currentUserLogin) {
                 res.status(200).render("own_profile", {
                   users,
                   gamesPlatforms,
                   currentUser,
                   usuario,
+                  games,
+                  platforms,
                 });
               } else {
                 var textoBotaoAmigo = "Adicionar amigo";
@@ -136,6 +147,8 @@ app.get("/usuario/:usuario", (req, res) => {
                   gamesPlatforms,
                   currentUser,
                   usuario,
+                  games,
+                  platforms,
                   textoBotaoAmigo,
                 });
               }
@@ -169,7 +182,6 @@ app.get("/home", (req, res) => {
                   platforms.push(gamePlatform);
                 }
               });
-              console.log(games);
               res.status(200).render("home", {
                 users,
                 gamesPlatforms,
