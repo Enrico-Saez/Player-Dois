@@ -14,7 +14,7 @@
 <body>
   <nav class="navbar">
     <div class="container">
-      <a href="home" class="navbar-brand text-decoration-none">PLAYER DOIS</a>
+      <a href="/home" class="navbar-brand text-decoration-none">PLAYER DOIS</a>
 
 
       <div class="botoes">
@@ -138,154 +138,270 @@
       <div class="col py-2" style=" border-right: #111111 1px solid">
         <div class="info_basica">
           <div class="row nome_foto_usuario p-1">
-            <h3 class="col-10">EU</h3>
-            <button class="btn col" data-bs-toggle="modal" data-bs-target="#modal_editar_perfil">Editar perfil</button>
+            <h3 class="col-10"><%= usuario %> </h3>
+            <button class="btn col" data-bs-toggle="modal" data-bs-target="#modal_editar_perfil">Editar biografia</button>
           </div>
           <div class="bio p-1 m-1">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem earum asperiores illo
-              assumenda molestiae nostrum quae sequi error nisi officiis!</p>
+            <%users.forEach((user) => { %>
+            <%if (user._id === usuario) { %>
+            <p><%=user.bio%></p>
+            <%} %>
+            <%})%>
           </div>
         </div>
         <hr>
-        <div class="carrossel_jogos">
-          OPS É +1 CARROSSEEEEEL
+        <div class=" carrossel_jogos">
+          <div id="carousel_jogos" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <%var primeiro = true;%>
+              <% var numeroItens = games.length/3 %>
+              <% if (!Number.isInteger(numeroItens)) { %>
+              <% numeroItens = Math.floor(numeroItens) + 1%>
+              <%} %>
+              <% var j = 0 %>
+              <%for (let i = 0; i < numeroItens; i++) {%>
+              <%if (primeiro) {%>
+              <div class="carousel-item active">
+                <div class="cards-wrapper">
+                  <%for (let n = 0; n < 3; n++) {%>
+                  <div class="card text-bg-dark" style="width: 10rem;">
+                    <img src="/<%= games[j].imagem %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <a href="/jogo/<%=games[j]._id%>">
+                        <p class="card-text"><%=games[j]._id%></p>
+                      </a>
+                    </div>
+                  </div>
+                  <% j++ %>
+                  <%if (j === games.length) { %>
+                  <%break;  %>
+                  <%} %>
+                  <%}%>
+                    </div>
+                  </div>
+                  <%primeiro = false;%>
+                  <%} else {%>
+                  <div class="carousel-item">
+                    <div class="cards-wrapper">
+                      <%for (let n = 0; n < 3; n++) {%>
+                      <div class="card text-bg-dark" style="width: 10rem;">
+                        <img src="/<%= games[j].imagem %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <a href="/jogo/<%=games[j]._id%>">
+                            <p class="card-text"><%=games[j]._id%></p>
+                          </a>
+                        </div>
+                      </div>
+                      <% j++ %>
+                      <%if (j === games.length) { %>
+                      <%break;  %>
+                      <%} %>
+                      <%}%>                     
+                    </div>
+                  </div>
+                  <%}%>
+                      <%}%>
+            </div>
+            <a class="carousel-control-prev" href="#carousel_jogos" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#carousel_jogos" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+
+        <div id="carousel_plataformas" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <%var primeiro = true;%>
+                      <% var numeroItens = platforms.length/3 %>
+                      <% if (!Number.isInteger(numeroItens)) { %>
+                      <% numeroItens = Math.floor(numeroItens) + 1%>
+                      <%} %>
+                      <% var j = 0 %>
+                      <%for (let i = 0; i < numeroItens; i++) {%>
+                      <%if (primeiro) {%>
+                      <div class="carousel-item active">
+                        <div class="cards-wrapper">
+                          <%for (let n = 0; n < 3; n++) {%>
+                          <div class="card text-bg-dark" style="width: 10rem;">
+                            <img src="/<%= platforms[j].imagem %>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <a href="/plataforma/<%=platforms[j]._id%>">
+                                <p class="card-text"><%=platforms[j]._id%></p>
+                              </a>
+                            </div>
+                          </div>
+                          <% j++ %>
+                          <%if (j === platforms.length) { %>
+                          <%break;  %>
+                          <%} %>
+                          <%}%>
+                  </div>
+                </div>
+                <%primeiro = false;%>
+                          <%} else {%>
+                          <div class="carousel-item">
+                            <div class="cards-wrapper">
+                              <%for (let n = 0; n < 3; n++) {%>
+                              <div class="card text-bg-dark" style="width: 10rem;">
+                                <img src="/<%= platforms[j].imagem %>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <a href="/plataforma/<%=platforms[j]._id%>">
+                                    <p class="card-text"><%=platforms[j]._id%></p>
+                                  </a>
+                                </div>
+                              </div>
+                              <% j++ %>
+                              <%if (j === platforms.length) { %>
+                              <%break;  %>
+                              <%} %>
+                              <%}%>                     
+                  </div>
+                </div>
+                <%}%>
+                              <%}%>
+          </div>
+          <a class="carousel-control-prev" href="#carousel_plataformas" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </a>
+          <a class="carousel-control-next" href="#carousel_plataformas" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </a>
         </div>
         <div class="row pontuacoes p-4">
           <div class="col-6 pontuacao_simpatia">
             <%users.forEach((user) => { %>
-            <%if (user._id === usuario) { %>
-            <h3>
-              <!--NOTA--> <%=user.aval_sim.reduce((a, b) => a + b, 0) / user.aval_sim.length;%>
-            </h3>
-            <% } %>
-            <%}) %>
-            <p>Sua pontuação média para SIMPATIA</p>
-          </div>
-          <div class="col-6 pontuacao_simpatia">
-            <%users.forEach((user) => { %>
-            <%if (user._id === usuario) { %>
-            <h3>
-              <!--NOTA--> <%=user.aval_hab.reduce((a, b) => a + b, 0) / user.aval_hab.length;%>
-            </h3>
-            <% } %>
-            <%}) %>
-            <p>Sua pontuação média para HABILIDADE</p>
-          </div>
-        </div>
+                              <%if (user._id === usuario) { %>
+                              <h3>
+                                <!--NOTA--> <%=user.aval_sim.reduce((a, b) => a + b, 0) / user.aval_sim.length;%>
+                              </h3>
+                              <% } %>
+                              <%}) %>
+                              <p>Sua pontuação de SIMPATIA média</p>
+                            </div>
+                            <div class="col-6 pontuacao_simpatia">
+                              <%users.forEach((user) => { %>
+                              <%if (user._id === usuario) { %>
+                              <h3>
+                                <!--NOTA--> <%=user.aval_hab.reduce((a, b) => a + b, 0) / user.aval_hab.length;%>
+                              </h3>
+                              <% } %>
+                              <%}) %>
+                              <p>Sua pontuação de HABILIDADE média</p>
+                            </div>
+                          </div>
 
 
-        <div class="modal fade" id="modal_editar_perfil" tabindex="-1" aria-labelledby="modalEditarPerfil" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content p-2">
-              <div class="modal-header">
+                          <div class="modal fade" id="modal_editar_perfil" tabindex="-1" aria-labelledby="modalEditarPerfil" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content p-2">
+                                <div class="modal-header">
 
-                <h5 class="modal-title" id="exampleModalLabel">Editar perfil</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
+                                  <h5 class="modal-title" id="exampleModalLabel">Editar biografia</h5>
+                                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
 
-              <div class="modal-body">
-                <form>
-                  <div class="mb-2">
-                    <label for="editor_nome" class="col-form-label">Novo nome de usuário</label>
-                    <input type="text" class="form-control" id="editor_nome">
-                  </div>
-                  <div class="mb-2">
-                    <label for="editor_bio" class="col-form-label">Alterar Bio</label>
-                    <textarea class="form-control" id="editor_nome" rows="3" maxlength=""></textarea>
-                  </div>
+                                <div class="modal-body">
+                                  <form action="/alterarBiografia" method="POST">
+                                    <div class="mb-2">
+                                      <label for="editor_bio" class="col-form-label">Nova biografia</label>
+                                      <p hidden><input type="text" name="usuario" value="<%=usuario%>"></input></p>
+                                      <textarea class="form-control" id="editor_nome" rows="3" maxlength="" name="biografia"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <input type="submit" class="btn btn-outline-light" value="Salvar"></input>
+                                    </div>
+                                  </form>
+                                </div>
 
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-light">Salvar alterações</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
 
-  <!-- MODALS PARA CADASTRO DE JOGO E PLATAFORMA-->
-  <!-- M. Cadastro Jogo-->
-  <div class="modal fade" id="modal_jogo" tabindex="-1" aria-labelledby="modalJogo" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content p-2">
-        <div class="modal-header">
+                    <!-- MODALS PARA CADASTRO DE JOGO E PLATAFORMA-->
+                    <!-- M. Cadastro Jogo-->
+                    <div class="modal fade" id="modal_jogo" tabindex="-1" aria-labelledby="modalJogo" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content p-2">
+                          <div class="modal-header">
 
-          <h5 class="modal-title" id="exampleModalLabel">Cadastro de Jogo </h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+                            <h5 class="modal-title" id="exampleModalLabel">Cadastro de Jogo </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
 
-        <div class="modal-body">
-          <form method="POST" action="cadastroJogo" enctype="multipart/form-data">
-            <div class="mb-2">
-              <label for="nome_jogo" class="col-form-label">Nome do jogo:</label>
-              <input type="text" class="form-control" id="nome_jogo" name="nome" require>
-            </div>
-            <div class="mb-2">
-              <label for="descricao_jogo" class="col-form-label">Descrição:</label>
-              <input type="text" class="form-control" id="descricao_jogo" name="desc" require></input>
-            </div>
+                          <div class="modal-body">
+                            <form method="POST" action="/cadastroJogo" enctype="multipart/form-data">
+                              <div class="mb-2">
+                                <label for="nome_jogo" class="col-form-label">Nome do jogo:</label>
+                                <input type="text" class="form-control" id="nome_jogo" name="nome" require>
+                              </div>
+                              <div class="mb-2">
+                                <label for="descricao_jogo" class="col-form-label">Descrição:</label>
+                                <input type="text" class="form-control" id="descricao_jogo" name="desc" require></input>
+                              </div>
 
-            <div class="mb-2">
-              <label for="imagem_jogo" class="col-form-label">Imagem de capa:</label>
-              <input type="file" class="form-control" id="imagem_jogo" name="imagem" require></input>
-            </div>
-            <div class="modal-footer">
-              <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+                              <div class="mb-2">
+                                <label for="imagem_jogo" class="col-form-label">Imagem de capa:</label>
+                                <input type="file" class="form-control" id="imagem_jogo" name="imagem" require></input>
+                              </div>
+                              <div class="modal-footer">
+                                <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-  <!-- M. Cadastro Plataforma-->
-  <div class="modal fade" id="modal_plataforma" tabindex="-1" aria-labelledby="modalPlataforma" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content p-2">
-        <div class="modal-header">
+                    <!-- M. Cadastro Plataforma-->
+                    <div class="modal fade" id="modal_plataforma" tabindex="-1" aria-labelledby="modalPlataforma" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content p-2">
+                          <div class="modal-header">
 
-          <h5 class="modal-title" id="exampleModalLabel">Cadastro de Plataforma </h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+                            <h5 class="modal-title" id="exampleModalLabel">Cadastro de Plataforma </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
 
-        <div class="modal-body">
-          <form method="POST" action="cadastroPlataforma" enctype="multipart/form-data">
-            <div class="mb-2">
-              <label for="nome_plataforma" class="col-form-label">Nome da plataforma:</label>
-              <input type="text" class="form-control" id="nome_plataforma" name="nome" required>
-            </div>
-            <div class="mb-2">
-              <label for="descricao_plataforma" class="col-form-label">Descrição:</label>
-              <input type="text" class="form-control" id="descricao_plataforma" name="desc" required></input>
-            </div>
+                          <div class="modal-body">
+                            <form method="POST" action="cadastroPlataforma" enctype="multipart/form-data">
+                              <div class="mb-2">
+                                <label for="nome_plataforma" class="col-form-label">Nome da plataforma:</label>
+                                <input type="text" class="form-control" id="nome_plataforma" name="nome" required>
+                              </div>
+                              <div class="mb-2">
+                                <label for="descricao_plataforma" class="col-form-label">Descrição:</label>
+                                <input type="text" class="form-control" id="descricao_plataforma" name="desc" required></input>
+                              </div>
 
-            <div class="mb-2">
-              <label for="imagem_plataforma" class="col-form-label">Imagem de capa:</label>
-              <input type="file" class="form-control" id="imagem_plataforma" name="imagem" required></input>
-            </div>
-            <div class="modal-footer">
-              <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+                              <div class="mb-2">
+                                <label for="imagem_plataforma" class="col-form-label">Imagem de capa:</label>
+                                <input type="file" class="form-control" id="imagem_plataforma" name="imagem" required></input>
+                              </div>
+                              <div class="modal-footer">
+                                <input type="submit" value="Cadastrar" class="btn btn-outline-light"></input>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-  <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
-  </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
+                    <div vw class="enabled">
+                      <div vw-access-button class="active"></div>
+                      <div vw-plugin-wrapper>
+                        <div class="vw-plugin-top-wrapper"></div>
+                      </div>
+                    </div>
+                    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                    <script>
+                      new window.VLibras.Widget('https://vlibras.gov.br/app');
+                    </script>
 
 </body>
 

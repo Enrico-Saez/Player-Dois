@@ -67,9 +67,9 @@ span:hover {
 
 .bio {
   color: white;
-  background-color: black;
-  border: #57cee2 solid 3px;
-  border-radius: 20px;
+  background-color: #111111;
+  border: #5e60cd solid 3px;
+  border-radius: 10px;
 }
 
 .pontuacoes {

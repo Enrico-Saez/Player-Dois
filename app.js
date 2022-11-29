@@ -542,6 +542,26 @@ app.post("/avaliar", (req, res) => {
   });
 });
 
+app.post("/alterarBiografia", (req, res) => {
+  User.find().then((users) => {
+    users.forEach((user) => {
+      if (user._id === req.body.usuario) {
+        User.updateOne(
+          { _id: user._id },
+          { bio: req.body.biografia },
+          function (err, docs) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.redirect("back");
+            }
+          }
+        );
+      }
+    });
+  });
+});
+
 app.use((req, res) => {
   res.status(404).render("404");
 });
