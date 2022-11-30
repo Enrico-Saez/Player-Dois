@@ -209,6 +209,34 @@ app.get("/home", (req, res) => {
     });
 });
 
+app.get("/chat/:usuario", (req, res) => {
+  const usuario = req.params.usuario;
+  User.find()
+    .then((users) => {
+      GamePlatform.find()
+        .then((gamesPlatforms) => {
+          CurrentUser.find()
+            .then((currentUser) => {
+              res.status(200).render("chat", {
+                users,
+                gamesPlatforms,
+                currentUser,
+                usuario,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 app.post("/cadastroUsuario", (req, res) => {
   const user = new User({
     _id: req.body.login,
@@ -558,6 +586,30 @@ app.post("/alterarBiografia", (req, res) => {
           }
         );
       }
+    });
+  });
+});
+
+app.post("/enviarMensagem", (req, res) => {
+  CurrentUser.find().then((currentUser) => {
+    User.findById(usuario).then((jogador) => {
+      const listaMensagens = jogador.mensagens;
+      const novaMensagem = {
+        ehDoRemetente: false,
+        conteudo: req.body.mensagem,
+      };
+      listaMensagens.push(novaMensagem);
+      User.updateOne(
+        { _id: jogador._id },
+        { mensagens: listaMensagens },
+        function (err, docs) {
+          if (err) {
+            console.error(err);
+          } else {
+            User.findById();
+          }
+        }
+      );
     });
   });
 });
