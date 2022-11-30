@@ -592,21 +592,62 @@ app.post("/alterarBiografia", (req, res) => {
 
 app.post("/enviarMensagem", (req, res) => {
   CurrentUser.find().then((currentUser) => {
-    User.findById(usuario).then((jogador) => {
-      const listaMensagens = jogador.mensagens;
-      const novaMensagem = {
-        ehDoRemetente: false,
-        conteudo: req.body.mensagem,
-      };
-      listaMensagens.push(novaMensagem);
+    const usuarioAtual = currentUser[0].currentUserLogin;
+    User.findById(req.body.jogador).then((jogador) => {
+      var listaMensagensJogador = jogador.mensagens;
+      if (listaMensagensJogador.indexOf(usuarioAtual) != -1) {
+        listaMensagensJogador[usuarioAtual][
+          listaMensagensJogador[usuarioAtual].length
+        ] = {
+          ehDoRemetente: false,
+          conteudo: req.body.mensagem,
+        };
+      } else {
+        listaMensagensJogador[usuarioAtual] = {
+          0: {
+            ehDoRemetente: false,
+            conteudo: req.body.mensagem,
+          },
+        };
+      }
+      console.log(listaMensagensJogador);
       User.updateOne(
         { _id: jogador._id },
-        { mensagens: listaMensagens },
+        { $set: { mensagens: listaMensagensJogador } },
         function (err, docs) {
           if (err) {
             console.error(err);
           } else {
-            User.findById();
+            User.findById(usuarioAtual).then((usuario) => {
+              var listaMensagensUsuario = usuario.mensagens;
+              if (listaMensagensUsuario.indexOf(req.body.jogador) != -1) {
+                listaMensagensUsuario[req.body.jogador][
+                  listaMensagensUsuario[req.body.jogador].length
+                ] = {
+                  ehDoRemetente: true,
+                  conteudo: req.body.mensagem,
+                };
+              } else {
+                listaMensagensUsuario[req.body.jogador] = {
+                  0: {
+                    ehDoRemetente: false,
+                    conteudo: req.body.mensagem,
+                  },
+                };
+              }
+              console.log(listaMensagensUsuario);
+              User.updateOne(
+                { _id: usuario._id },
+                { $set: { mensagens: listaMensagensUsuario } },
+                function (err, docs) {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    res.redirect("back");
+                  }
+                }
+              );
+            });
           }
         }
       );
