@@ -67,6 +67,11 @@
             <% }) %>
           </ul>
         </div>
+        <div>
+          <a class="sidebar_botao_mobile btn d-sm-block d-md-none" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg> Menu</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -74,7 +79,7 @@
   <div class="container">
     <div class="row flex-nowrap">
 
-      <div class="col-auto col-sm-4 col-md-3 px-0">
+      <div class="col-auto col-sm-4 col-md-3 px-0 collapse collapse-horizontal d-md-block" id="collapseExample">
         <div class="sidebar d-flex flex-column align-items-center align-items-sm-start px-3 pt-2">
 
           <div class="usuario">
@@ -173,6 +178,7 @@
           </div>
         </div>
         <hr>
+        <h4>Jogos</h4>
         <div class=" carrossel_jogos">
           <div id="carousel_jogos" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -188,7 +194,7 @@
                 <div class="cards-wrapper">
                   <%for (let n = 0; n < 3; n++) {%>
                   <div class="card text-bg-dark" style="width: 10rem;">
-                    <img src="/<%= games[j].imagem %>" class="card-img-top" alt="...">
+                    <img src="/<%= games[j].imagem %>" class="card-img-top" alt="..." style="height:fit-content">
                     <div class="card-body">
                       <a href="/jogo/<%=games[j]._id%>">
                         <p class="card-text"><%=games[j]._id%></p>
@@ -208,7 +214,7 @@
                     <div class="cards-wrapper">
                       <%for (let n = 0; n < 3; n++) {%>
                       <div class="card text-bg-dark" style="width: 10rem;">
-                        <img src="/<%= games[j].imagem %>" class="card-img-top" alt="...">
+                        <img src="/<%= games[j].imagem %>" class="card-img-top" alt="..." style="height:fit-content">
                         <div class="card-body">
                           <a href="/jogo/<%=games[j]._id%>">
                             <p class="card-text"><%=games[j]._id%></p>
@@ -234,6 +240,7 @@
           </div>
         </div>
 
+        <h4>Plataformas</h4>
         <div id="carousel_plataformas" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <%var primeiro = true;%>
@@ -292,6 +299,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
           </a>
         </div>
+        <hr>
         <div class="row pontuacoes p-4">
           <div class="col-6 pontuacao_simpatia">
             <%users.forEach((user) => { %>
